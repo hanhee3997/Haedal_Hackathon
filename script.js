@@ -61,6 +61,7 @@ const mapButtons = document.querySelectorAll(".map-label");
 const cards = document.querySelectorAll(".gate-card");
 const openButtons = document.querySelectorAll("[data-open]");
 
+const detailSection = document.getElementById("detail");
 const detailTitle = document.getElementById("detailTitle");
 const detailTag = document.getElementById("detailTag");
 const detailDesc = document.getElementById("detailDesc");
@@ -70,16 +71,29 @@ const detailTraffic = document.getElementById("detailTraffic");
 const detailStore = document.getElementById("detailStore");
 const detailTips = document.getElementById("detailTips");
 
+function renderTips(tips) {
+  detailTips.innerHTML = "";
+  tips.forEach((tip) => {
+    const li = document.createElement("li");
+    li.textContent = tip;
+    detailTips.appendChild(li);
+  });
+}
+
 function activateGate(key, scrollDetail = false) {
-  mapButtons.forEach(btn => {
-    btn.classList.toggle("active", btn.dataset.gate === key);
+  const data = gateData[key];
+  if (!data) return;
+
+  mapButtons.forEach((btn) => {
+    const isActive = btn.dataset.gate === key;
+    btn.classList.toggle("active", isActive);
+    btn.setAttribute("aria-pressed", String(isActive));
   });
 
-  cards.forEach(card => {
+  cards.forEach((card) => {
     card.classList.toggle("active", card.dataset.card === key);
   });
 
-  const data = gateData[key];
   detailTitle.textContent = data.title;
   detailTag.textContent = data.tag;
   detailDesc.textContent = data.desc;
@@ -87,43 +101,47 @@ function activateGate(key, scrollDetail = false) {
   detailTarget.textContent = data.target;
   detailTraffic.textContent = data.traffic;
   detailStore.textContent = data.store;
-  detailTips.innerHTML = data.tips.map(tip => `<li>${tip}</li>`).join("");
+  renderTips(data.tips);
 
-  if (scrollDetail) {
-    document.getElementById("detail").scrollIntoView({ behavior: "smooth", block: "start" });
+  if (scrollDetail && detailSection) {
+    detailSection.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 }
 
-mapButtons.forEach(btn => {
-  btn.addEventListener("click", () => activateGate(btn.dataset.gate));
+mapButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const isMobile = window.innerWidth <= 680;
+    activateGate(btn.dataset.gate, isMobile);
+  });
 });
 
-openButtons.forEach(btn => {
-  btn.addEventListener("click", () => activateGate(btn.dataset.open, true));
+openButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    activateGate(btn.dataset.open, true);
+  });
 });
 
 const navLinks = document.querySelectorAll(".main-nav a");
 const navIndicator = document.querySelector(".nav-indicator");
 
 function moveIndicator(target) {
-  if (!target || !navIndicator) return;
+  if (!target || !navIndicator || window.innerWidth <= 680) return;
   navIndicator.style.width = `${target.offsetWidth}px`;
   navIndicator.style.transform = `translateX(${target.offsetLeft}px)`;
 }
 
-navLinks.forEach(link => {
+navLinks.forEach((link) => {
   link.addEventListener("click", () => {
-    navLinks.forEach(item => item.classList.remove("active"));
+    navLinks.forEach((item) => item.classList.remove("active"));
     link.classList.add("active");
     moveIndicator(link);
   });
 });
 
 window.addEventListener("load", () => {
+  activateGate("bukmun");
   const activeLink = document.querySelector(".main-nav a.active") || navLinks[0];
-  if (activeLink) {
-    moveIndicator(activeLink);
-  }
+  moveIndicator(activeLink);
 });
 
 window.addEventListener("resize", () => {

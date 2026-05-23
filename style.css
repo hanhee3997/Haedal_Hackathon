@@ -9,15 +9,75 @@
     --muted: #6d7178;
     --bg: #f8faf8;
     --card-shadow: 0 10px 24px rgba(20, 43, 30, 0.08);
-    --radius-xl: 24px;
-    --radius-lg: 18px;
-    --radius-md: 14px;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-display: swap;
 }
 
 html {
@@ -53,7 +113,6 @@ img {
     margin: 0 auto;
 }
 
-/* Header */
 .site-header {
     position: sticky;
     top: 0;
@@ -74,24 +133,50 @@ img {
 .brand {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-weight: 800;
-    color: var(--green-dark);
-    font-size: 28px;
-    letter-spacing: -0.5px;
+    gap: 18px;
     flex-shrink: 0;
+    color: var(--green-dark);
+    min-width: 0;
 }
 
 .brand svg {
-    width: 34px;
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    color: #1ab749;
+}
+
+.brand-name {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -1.2px;
+    color: #4da668;
+    white-space: nowrap;
+    font-family: 'Pretendard';
+}
+
+.brand-divider {
+    width: 3px;
     height: 34px;
+    background: rgba(34, 34, 34, 0.14);
+    flex-shrink: 0;
+}
+
+.brand-sub {
+    font-size: 17px;
+    font-weight: 500;
+    color: #1f2328;
+    letter-spacing: -0.3px;
+    white-space: nowrap;
+    font-family: "Noto Sans KR", sans-serif;
 }
 
 .main-nav {
     position: relative;
     display: flex;
     align-items: center;
-    gap: 42px;
+    gap: 32px;
     font-weight: 700;
     color: #2d3138;
 }
@@ -99,7 +184,7 @@ img {
 .main-nav a {
     position: relative;
     padding: 6px 0 14px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .main-nav a::after {
@@ -139,12 +224,6 @@ img {
     transform: translateY(-1px);
 }
 
-/* Unused spacer kept in HTML: visually removed */
-.pre-map-space {
-    display: none;
-}
-
-/* Hero */
 .hero {
     padding: 28px 0 20px;
 }
@@ -160,7 +239,6 @@ img {
     background-position: center;
     background-size: cover;
     box-shadow: var(--card-shadow);
-    isolation: isolate;
 }
 
 .map-label {
@@ -182,18 +260,11 @@ img {
     font-size: 20px;
     font-weight: 900;
     letter-spacing: -0.6px;
-    transition:
-        background 0.22s ease,
-        color 0.22s ease,
-        border-color 0.22s ease,
-        box-shadow 0.22s ease,
-        transform 0.22s ease;
+    transition: background 0.22s ease, color 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
 }
 
 .map-label span {
     color: inherit;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.95);
-    transition: color 0.22s ease, text-shadow 0.22s ease;
 }
 
 .map-label::after {
@@ -210,14 +281,8 @@ img {
     background: linear-gradient(180deg, #92cb50 0%, #6db43d 100%);
     border-color: #79b447;
     color: #ffffff;
-    box-shadow:
-        0 10px 22px rgba(79, 131, 36, 0.34),
-        inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    box-shadow: 0 10px 22px rgba(79, 131, 36, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.22);
     transform: translateY(-2px);
-}
-
-.map-label:hover span {
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.28);
 }
 
 .map-label:hover::after {
@@ -233,28 +298,23 @@ img {
 .label-seomun {
     left: 150px;
     top: 350px;
-    color: #598840;
 }
 
 .label-bukmun {
     left: 350px;
     top: 115px;
-    color: #598840;
-}
-
-.label-jjokmun {
-    left: 550px;
-    top: 520px;
-    color: #598840;
 }
 
 .label-techno {
     left: 770px;
     top: 230px;
-    color: #598840;
 }
 
-/* Cards */
+.label-jjokmun {
+    left: 550px;
+    top: 520px;
+}
+
 .gate-section {
     padding: 22px 0 32px;
 }
@@ -363,7 +423,6 @@ img {
     width: 32px;
     height: 32px;
     margin: 0 auto 8px;
-    color: var(--card-color, #555);
 }
 
 .meta-box strong {
@@ -397,7 +456,6 @@ img {
     filter: brightness(1.04);
 }
 
-/* Detail panel */
 .detail-panel {
     margin: 8px 0 50px;
     background: white;
@@ -433,7 +491,6 @@ img {
 .detail-body {
     display: grid;
     grid-template-columns: 1.25fr 0.75fr;
-    gap: 0;
     border-top: 1px solid var(--line);
 }
 
@@ -497,22 +554,6 @@ img {
     border: 1px solid #e9ecea;
     color: #54606a;
     font-size: 15px;
-}
-
-/* Responsive */
-@media (max-width: 1160px) {
-    .main-nav {
-        gap: 24px;
-        font-size: 16px;
-    }
-
-    .label-techno {
-        left: 700px;
-    }
-
-    .label-jjokmun {
-        left: 500px;
-    }
 }
 
 @media (max-width: 1024px) {
