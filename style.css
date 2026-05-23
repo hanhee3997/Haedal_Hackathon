@@ -143,7 +143,7 @@ img {
     width: 56px;
     height: 56px;
     flex-shrink: 0;
-    color: #1ab749;
+    color: #6abbaf;
 }
 
 .brand-name {
@@ -151,7 +151,7 @@ img {
     font-weight: 600;
     line-height: 1;
     letter-spacing: -1.2px;
-    color: #4da668;
+    color: #63c6b7;
     white-space: nowrap;
     font-family: 'Pretendard';
 }
@@ -165,11 +165,11 @@ img {
 
 .brand-sub {
     font-size: 17px;
-    font-weight: 500;
-    color: #1f2328;
+    font-weight: 600;
+    color: #424549;
     letter-spacing: -0.3px;
     white-space: nowrap;
-    font-family: "Noto Sans KR", sans-serif;
+    font-family: 'Pretendard';
 }
 
 .main-nav {
@@ -178,7 +178,11 @@ img {
     align-items: center;
     gap: 70px;
     font-weight: 700;
-    color: #2d3138;
+    color: #1a1d21;
+}
+
+.main-nav a:hover {
+    color: #61656e;
 }
 
 .main-nav a {
@@ -248,7 +252,7 @@ img {
     padding: 0 22px 0 28px;
     border-radius: 999px;
     background: #ffffff;
-    border: 2px solid #a7c767;
+    border: 2px solid #00b992;
     box-shadow:
         0 8px 18px rgba(104, 150, 54, 0.22),
         inset 0 1px 0 rgba(255, 255, 255, 0.95);
@@ -256,7 +260,7 @@ img {
     align-items: center;
     justify-content: space-between;
     gap: 18px;
-    color: #69a84a;
+    color: #00b992;
     font-size: 20px;
     font-weight: 900;
     letter-spacing: -0.6px;
@@ -278,20 +282,19 @@ img {
 }
 
 .map-label:hover {
-    background: linear-gradient(180deg, #92cb50 0%, #6db43d 100%);
-    border-color: #79b447;
+    background: linear-gradient(270deg, #70deb4 0%, #5ebd99 100%);
+    border-color: #5ebd99;
     color: #ffffff;
     box-shadow: 0 10px 22px rgba(79, 131, 36, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.22);
-    transform: translateY(-2px);
+    transform: translateY(-8px);
 }
 
-.map-label:hover::after {
-    color: #ffffff;
-    transform: translate(2px, -1px);
+.map-label.active:hover {
+    transform: scale(1.1) translateY(-8px);
 }
 
 .map-label.active {
-    transform: scale(1.05);
+    transform: scale(1.1);
     box-shadow: 0 18px 30px rgba(28, 41, 48, 0.18);
 }
 
