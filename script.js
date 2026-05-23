@@ -115,9 +115,17 @@ mapButtons.forEach((btn) => {
   });
 });
 
+const gateToLocation = {
+  "seomun": "서문",
+  "bukmun": "북문",
+  "jjokmun": "쪽문",
+  "techno": "테크노문"
+};
+
 openButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
-    activateGate(btn.dataset.open, true);
+    const locationName = gateToLocation[btn.dataset.open];
+    window.location.href = `/location/${locationName}`;
   });
 });
 

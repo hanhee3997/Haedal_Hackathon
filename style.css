@@ -238,7 +238,7 @@ img {
     overflow: hidden;
     border-radius: 28px;
     border: 1px solid #dde4dd;
-    background-image: url("./aa.png");
+    background-image: url("/static/aa.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
