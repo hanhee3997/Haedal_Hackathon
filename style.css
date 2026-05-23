@@ -176,7 +176,7 @@ img {
     position: relative;
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 70px;
     font-weight: 700;
     color: #2d3138;
 }
@@ -184,7 +184,7 @@ img {
 .main-nav a {
     position: relative;
     padding: 6px 0 14px;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .main-nav a::after {
