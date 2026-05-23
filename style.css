@@ -117,44 +117,11 @@ img {
     transition: transform 0.25s ease, width 0.25s ease;
 }
 
-@media (max-width: 680px) {
-    .nav-indicator {
-        display: none;
-    }
-
-    .main-nav a::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -4px;
-        width: 0;
-        height: 3px;
-        border-radius: 999px;
-        background: var(--green);
-        transition: width 0.25s ease;
-        display: block;
-    }
-
-    .main-nav a.active::after {
-        width: 100%;
-    }
-}
-
 .header-actions {
     display: flex;
     align-items: center;
     gap: 14px;
     flex-shrink: 0;
-}
-
-.point-pill {
-    padding: 12px 18px;
-    border-radius: 999px;
-    background: #edf8ef;
-    color: var(--green);
-    font-weight: 800;
-    border: 1px solid #d7ecd9;
-    white-space: nowrap;
 }
 
 .icon-btn {
@@ -172,8 +139,9 @@ img {
     transform: translateY(-1px);
 }
 
+/* Unused spacer kept in HTML: visually removed */
 .pre-map-space {
-    height: 110vh;
+    display: none;
 }
 
 /* Hero */
@@ -193,83 +161,6 @@ img {
     background-size: cover;
     box-shadow: var(--card-shadow);
     isolation: isolate;
-}
-
-/* 지도 위 회색 선/오버레이 제거 */
-.hero-map::before,
-.hero-map::after {
-    display: none;
-}
-
-/* 지도 위에 올라간 요소 전부 제거 */
-.map-label,
-.campus-core,
-.poi-text,
-.map-overlay-box {
-    display: none;
-}
-
-/* Fake map lines */
-.hero-map::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(90deg, transparent 0 8%, rgba(214, 209, 199, .7) 8.2% 8.45%, transparent 8.6% 16%,
-            rgba(214, 209, 199, .55) 16.1% 16.3%, transparent 16.5% 30%,
-            rgba(214, 209, 199, .65) 30.2% 30.5%, transparent 30.8% 45%,
-            rgba(214, 209, 199, .6) 45.2% 45.5%, transparent 45.8% 62%,
-            rgba(214, 209, 199, .65) 62.1% 62.45%, transparent 62.7% 100%),
-        linear-gradient(transparent 0 12%, rgba(212, 208, 199, .58) 12.1% 12.35%, transparent 12.6% 28%,
-            rgba(212, 208, 199, .58) 28.2% 28.45%, transparent 28.8% 43%,
-            rgba(212, 208, 199, .58) 43.2% 43.45%, transparent 43.7% 58%,
-            rgba(212, 208, 199, .58) 58.2% 58.45%, transparent 58.8% 74%,
-            rgba(212, 208, 199, .58) 74.2% 74.45%, transparent 74.8% 100%);
-    opacity: .8;
-    z-index: -1;
-}
-
-.hero-map::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(25deg, transparent 0 44%, rgba(104, 176, 225, 0.18) 44.5% 53%, transparent 54%),
-        radial-gradient(circle at 47% 47%, rgba(69, 125, 232, 0.12), rgba(69, 125, 232, 0.07) 18%, transparent 34%);
-    pointer-events: none;
-}
-
-.map-overlay-box {
-    position: absolute;
-    left: 18px;
-    top: 24px;
-    width: 310px;
-    background: rgba(247, 250, 244, 0.92);
-    border: 2px solid #8eb994;
-    border-radius: 28px;
-    padding: 28px 26px;
-    box-shadow: 0 16px 28px rgba(67, 100, 74, 0.12);
-    backdrop-filter: blur(6px);
-}
-
-.map-overlay-box h1 {
-    font-size: 30px;
-    line-height: 1.35;
-    color: var(--green-dark);
-    margin-bottom: 18px;
-    letter-spacing: -1px;
-}
-
-.map-overlay-box p {
-    font-size: 17px;
-    color: #555d61;
-    line-height: 1.8;
-    margin-bottom: 28px;
-}
-
-.mini-illustration {
-    width: 180px;
-    margin-top: 10px;
 }
 
 .map-label {
@@ -299,27 +190,22 @@ img {
         transform 0.22s ease;
 }
 
-/* 버튼 안 글자 */
 .map-label span {
     color: inherit;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.95);
     transition: color 0.22s ease, text-shadow 0.22s ease;
 }
 
-/* 오른쪽 화살표 */
 .map-label::after {
-  content: "➜";
-  font-size: 33px;
-  font-weight: 700;
-  line-height: 1;
-  color: inherit;
-  transform: translateY(-1px);
-  transition:
-    color 0.22s ease,
-    transform 0.22s ease;
+    content: "➜";
+    font-size: 33px;
+    font-weight: 700;
+    line-height: 1;
+    color: inherit;
+    transform: translateY(-1px);
+    transition: color 0.22s ease, transform 0.22s ease;
 }
 
-/* hover 상태 = image-2 느낌 */
 .map-label:hover {
     background: linear-gradient(180deg, #92cb50 0%, #6db43d 100%);
     border-color: #79b447;
@@ -339,35 +225,9 @@ img {
     transform: translate(2px, -1px);
 }
 
-/* 예전 원형 아이콘 구조 남아 있어도 안 보이게 */
-.map-label .pin-icon {
-    display: none;
-}
-
-.map-label small {
-    font-size: 14px;
-    font-weight: 700;
-    opacity: .75;
-    display: block;
-    margin-top: 2px;
-}
-
 .map-label.active {
     transform: scale(1.05);
     box-shadow: 0 18px 30px rgba(28, 41, 48, 0.18);
-}
-
-@media (max-width: 680px) {
-    .map-label {
-        min-width: 140px;
-        height: 56px;
-        padding: 0 18px 0 22px;
-        font-size: 17px;
-    }
-
-    .map-label::after {
-        font-size: 28px;
-    }
 }
 
 .label-seomun {
@@ -394,78 +254,6 @@ img {
     color: #598840;
 }
 
-.campus-core {
-    position: absolute;
-    left: 470px;
-    top: 105px;
-    width: 340px;
-    height: 380px;
-    border: 2px solid rgba(104, 170, 113, 0.35);
-    background: rgba(94, 142, 215, 0.09);
-    backdrop-filter: blur(1px);
-}
-
-.campus-core .name {
-    position: absolute;
-    font-size: 24px;
-    font-weight: 800;
-    color: #222;
-    opacity: .8;
-}
-
-.campus-core .name-1 {
-    top: 8px;
-    left: 58px;
-}
-
-.campus-core .name-2 {
-    top: 15px;
-    right: 40px;
-}
-
-.campus-core .name-3 {
-    bottom: 28px;
-    left: 118px;
-}
-
-.poi-text {
-    position: absolute;
-    font-size: 14px;
-    font-weight: 700;
-    color: #b65433;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
-}
-
-.poi-1 {
-    left: 550px;
-    top: 290px;
-    color: #ca7031;
-}
-
-.poi-2 {
-    left: 630px;
-    top: 260px;
-    color: #d5316a;
-}
-
-.poi-3 {
-    left: 703px;
-    top: 270px;
-    color: #9c36b7;
-}
-
-.poi-4 {
-    left: 545px;
-    top: 355px;
-    color: #e27a1f;
-}
-
-.poi-5 {
-    left: 620px;
-    top: 390px;
-    color: #8a49c4;
-}
-
 /* Cards */
 .gate-section {
     padding: 22px 0 32px;
@@ -483,7 +271,7 @@ img {
     border: 1.5px solid var(--card-color-soft, #ddd);
     box-shadow: 0 10px 24px rgba(42, 48, 58, 0.05);
     padding: 18px;
-    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     display: flex;
     flex-direction: column;
     min-height: 310px;
@@ -601,7 +389,7 @@ img {
     font-size: 17px;
     background: var(--card-color, #444);
     box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.08);
-    transition: transform .2s ease, filter .2s ease;
+    transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .cta-btn:hover {
@@ -644,7 +432,7 @@ img {
 
 .detail-body {
     display: grid;
-    grid-template-columns: 1.25fr .75fr;
+    grid-template-columns: 1.25fr 0.75fr;
     gap: 0;
     border-top: 1px solid var(--line);
 }
@@ -719,11 +507,11 @@ img {
     }
 
     .label-techno {
-        left: 760px;
+        left: 700px;
     }
 
     .label-jjokmun {
-        left: 560px;
+        left: 500px;
     }
 }
 
@@ -741,69 +529,30 @@ img {
     }
 
     .hero-map {
-        min-height: 920px;
-    }
-
-    .map-overlay-box {
-        position: relative;
-        left: auto;
-        top: auto;
-        width: calc(100% - 32px);
-        margin: 16px;
-    }
-
-    .campus-core {
-        left: 50%;
-        transform: translateX(-50%);
-        top: 255px;
+        min-height: 760px;
     }
 
     .label-bukmun {
         left: 54%;
         transform: translateX(-10%);
-        top: 210px;
+        top: 120px;
     }
 
     .label-seomun {
         left: 12%;
-        top: 470px;
+        top: 360px;
     }
 
     .label-techno {
         right: 8%;
         left: auto;
-        top: 430px;
+        top: 260px;
     }
 
     .label-jjokmun {
         left: 50%;
         transform: translateX(-10%);
-        top: 670px;
-    }
-
-    .poi-1 {
-        top: 445px;
-        left: 46%;
-    }
-
-    .poi-2 {
-        top: 390px;
-        left: 57%;
-    }
-
-    .poi-3 {
-        top: 395px;
-        left: 68%;
-    }
-
-    .poi-4 {
-        top: 565px;
-        left: 46%;
-    }
-
-    .poi-5 {
-        top: 612px;
-        left: 56%;
+        top: 560px;
     }
 
     .gate-grid {
@@ -840,83 +589,71 @@ img {
         font-size: 15px;
     }
 
+    .main-nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0;
+        height: 3px;
+        border-radius: 999px;
+        background: var(--green);
+        transition: width 0.25s ease;
+        display: block;
+    }
+
+    .main-nav a.active::after {
+        width: 100%;
+    }
+
+    .nav-indicator {
+        display: none;
+    }
+
     .header-actions {
         width: 100%;
         justify-content: flex-end;
     }
 
-    .point-pill {
-        font-size: 14px;
-        padding: 10px 14px;
-    }
-
     .hero-map {
-        min-height: 960px;
+        min-height: 620px;
         border-radius: 22px;
     }
 
-    .map-overlay-box {
-        padding: 22px 18px;
+    .map-label {
+        min-width: 132px;
+        height: 52px;
+        padding: 0 16px 0 18px;
+        font-size: 16px;
+        gap: 8px;
     }
 
-    .map-overlay-box h1 {
+    .map-label::after {
         font-size: 24px;
-    }
-
-    .map-overlay-box p {
-        font-size: 15px;
-    }
-
-    .campus-core {
-        width: calc(100% - 48px);
-        height: 330px;
-        top: 250px;
-    }
-
-    .campus-core .name {
-        font-size: 18px;
-    }
-
-    .label-bukmun,
-    .label-seomun,
-    .label-techno,
-    .label-jjokmun {
-        padding: 10px 14px 10px 12px;
-        font-size: 18px;
-        gap: 10px;
-    }
-
-    .map-label .pin-icon {
-        width: 34px;
-        height: 34px;
     }
 
     .label-bukmun {
         left: auto;
         right: 16px;
-        top: 200px;
+        top: 90px;
         transform: none;
     }
 
     .label-seomun {
         left: 16px;
-        top: 470px;
+        top: 300px;
     }
 
     .label-techno {
         right: 16px;
-        top: 470px;
+        top: 220px;
     }
 
     .label-jjokmun {
         left: auto;
         right: 16px;
-        top: 650px;
+        top: 470px;
         transform: none;
-    }
-
-    .poi-text {
-        display: none;
     }
 
     .gate-grid {
