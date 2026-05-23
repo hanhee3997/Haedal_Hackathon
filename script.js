@@ -110,8 +110,19 @@ function activateGate(key, scrollDetail = false) {
 
 mapButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
-    const isMobile = window.innerWidth <= 680;
-    activateGate(btn.dataset.gate, isMobile);
+    const gateKey = btn.dataset.gate; 
+    const isMobile = window.innerWidth <= 680; 
+    
+   
+    activateGate(gateKey, isMobile); 
+    
+   
+    setTimeout(() => {
+      const locationName = gateToLocation[gateKey]; 
+      if (locationName) {
+        window.location.href = `/location/${locationName}`; 
+      }
+    }, 300);
   });
 });
 
