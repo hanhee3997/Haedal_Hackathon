@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+
+<body class="login-page">
+    <div class="login-card">
+
+        <div class="brand-header">
+            <div class="brand-text-wrap">
+                <span class="brand-title">자취파티</span>
+                <span class="brand-divider"></span>
+                <span class="brand-subtitle">경북대 자취방 후기</span>
+            </div>
+        </div>
+
+        <h1 class="login-title">회원가입</h1>
+        <p class="login-subtext">정보를 입력해주세요</p>
+
+        <form method="POST" class="login-form">
+            <div class="input-group">
+                <i class="fa-regular fa-user"></i>
+                <input type="text" name="name" placeholder="이름 입력" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fa-regular fa-id-card"></i>
+                <input type="text" name="username" placeholder="아이디 입력" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" name="password" placeholder="비밀번호 입력" required
+                    pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};:\',.<>?/\\|`~]).{8,20}$"
+                    title="비밀번호는 영문, 숫자, 특수문자를 포함해 8~20자로 입력해주세요." aria-describedby="password-help">
+            </div>
+
+            <p id="password-help" class="helper-text">
+                - 비밀번호는 영문, 숫자, 특수문자를 포함해 8~20자로 입력해주세요
+            </p>
+
+            <div class="input-group">
+                <i class="fa-solid fa-check"></i>
+                <input type="password" name="password_confirm" placeholder="비밀번호 확인" required>
+            </div>
+
+            {% if error %}
+            <div class="error-message">{{ error }}</div>
+            {% endif %}
+
+            <button type="submit" class="login-btn">가입하기</button>
+        </form>
+
+        <div class="divider-line"></div>
+
+        <p class="bottom-text">
+            이미 계정이 있나요?
+            <a href="{{ url_for('login') }}">로그인</a>
+        </p>
+    </div>
+</body>
+
+</html>

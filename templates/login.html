@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+
+<body class="login-page">
+    <div class="login-card">
+
+        <div class="brand-header">
+            <div class="brand-text-wrap">
+                <span class="brand-title">자취파티</span>
+                <span class="brand-divider"></span>
+                <span class="brand-subtitle">경북대 자취방 후기</span>
+            </div>
+        </div>
+
+        <h1 class="login-title">로그인</h1>
+        <p class="login-subtext">정보를 입력해주세요</p>
+
+        <form method="POST" class="login-form">
+            <div class="input-group">
+                <i class="fa-regular fa-user"></i>
+                <input type="text" name="username" placeholder="아이디 입력" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" name="password" placeholder="비밀번호 입력" required>
+            </div>
+
+            {% if error %}
+            <div class="error-message">{{ error }}</div>
+            {% endif %}
+
+            <button type="submit" class="login-btn">로그인</button>
+        </form>
+
+        <div class="divider-line"></div>
+
+        <p class="bottom-text">
+            계정이 없나요?
+            <a href="{{ url_for('register') }}">회원가입</a>
+        </p>
+    </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="toast-container">
+        {% for category, message in messages %}
+        <div class="toast-message {{ category }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+    <script src="{{ url_for('static', filename='login.js') }}"></script>
+</body>
+
+</html>

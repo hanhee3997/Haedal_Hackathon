@@ -1,11 +1,15 @@
-from flask import Flask, request, jsonify, session, redirect, url_for, render_template
+from flask import Flask, request, jsonify, session, redirect, url_for, render_template, flash
 import csv
 import os
+import re
 
 app = Flask(__name__)
 app.secret_key = 'sunmyeong_secret_key_1234'
 CSV_FILE = 'reviews.csv'
 USER_FILE = 'users.csv'
+PASSWORD_REGEX = re.compile(
+    r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};:\'",.<>?/\\|`~]).{8,20}$'
+)
 
 if not os.path.exists(CSV_FILE):
     with open(CSV_FILE, mode='w', encoding='utf-8', newline='') as f:
@@ -13,39 +17,55 @@ if not os.path.exists(CSV_FILE):
 
 if not os.path.exists(USER_FILE):
     with open(USER_FILE, mode='w', encoding='utf-8', newline='') as f:
-        csv.writer(f).writerow(['username', 'password'])
+        csv.writer(f).writerow(['name', 'username', 'password'])
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    error = None
+
     if request.method == 'POST':
-        user_id = request.form.get('username').strip()
-        user_pw = request.form.get('password').strip()
+        name = request.form.get('name', '').strip()
+        user_id = request.form.get('username', '').strip()
+        user_pw = request.form.get('password', '').strip()
+        user_pw_confirm = request.form.get('password_confirm', '').strip()
+
+        if not name or not user_id or not user_pw or not user_pw_confirm:
+            error = '모든 항목을 입력해주세요.'
+            return render_template('register.html', error=error)
+
+        if user_pw != user_pw_confirm:
+            error = '비밀번호 확인이 일치하지 않습니다.'
+            return render_template('register.html', error=error)
+
+        if not PASSWORD_REGEX.match(user_pw):
+            error = '비밀번호는 영문, 숫자, 특수문자를 포함해 8~20자로 입력해주세요.'
+            return render_template('register.html', error=error)
+
         with open(USER_FILE, mode='a', encoding='utf-8', newline='') as f:
-            csv.writer(f).writerow([user_id, user_pw])
-        return "<h2>가입 성공! 🎉</h2><a href='/login'>로그인하러 가기</a>"
-    return '''<div style="text-align:center; margin-top:100px;"><h2>📝 회원가입</h2>
-    <form method="POST">
-    <input name="username" placeholder="아이디" required><br><br>
-    <input type="password" name="password" placeholder="비밀번호" required><br><br>
-    <button>가입하기</button></form></div>'''
+            csv.writer(f).writerow([name, user_id, user_pw])
+
+        flash('회원가입이 완료되었습니다. 로그인해주세요!', 'success')
+        return redirect(url_for('login'))
+
+    return render_template('register.html', error=error)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    error = None
+
     if request.method == 'POST':
         user_id = request.form.get('username').strip()
         user_pw = request.form.get('password').strip()
+
         with open(USER_FILE, mode='r', encoding='utf-8') as f:
             for row in csv.reader(f):
-                if row and row[0] == user_id and row[1] == user_pw:
+                if row and row[1] == user_id and row[2] == user_pw:
                     session['logged_in'] = True
                     return redirect(url_for('home'))
-        return "<h2>아이디/비번이 틀렸습니다.</h2><a href='/login'>다시 시도</a>"
-    return '''<div style="text-align:center; margin-top:100px;"><h2>🏠 로그인</h2>
-    <form method="POST">
-    <input name="username" placeholder="아이디" required><br><br>
-    <input type="password" name="password" placeholder="비밀번호" required><br><br>
-    <button>로그인</button></form><br>
-    <a href="/register">회원가입 하기</a></div>'''
+
+        error = '아이디/비번이 틀렸습니다.'
+
+    return render_template('login.html', error=error)
 
 @app.route('/logout')
 def logout():
