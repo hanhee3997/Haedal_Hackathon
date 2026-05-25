@@ -110,5 +110,9 @@ def show_reviews(name):
                     })
     return render_template('reviews.html', location=target_name, reviews=reviews)
 
+@app.route("/mypage")
+def mypage():
+    return render_template("mypage.html")
+
 if __name__ == '__main__':
     app.run(debug=True)

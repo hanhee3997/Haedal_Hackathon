@@ -42,7 +42,7 @@
                 onclick="window.open(this.href); return false;">
                 문의하기
                 </a>
-                <a href="#gates">마이페이지</a>
+                <a href="/mypage" target="_blank">마이페이지</a>
                 <span class="nav-indicator" aria-hidden="true"></span>
             </nav>
 
@@ -60,12 +60,14 @@
                     </svg>
                 </button>
 
-                <button class="icon-btn" aria-label="프로필">
-                    <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z" />
-                    </svg>
-                </button>
+                <a href="/mypage" target="_blank">
+                    <button class="icon-btn" aria-label="프로필">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z" />
+                        </svg>
+                    </button>
+                </a>
             </div>
         </div>
     </header>
@@ -233,51 +235,49 @@
 
         <section id="detail">
             <div class="container">
-                <div class="detail-panel">
+
+                <div class="detail-panel mypage-panel">
+
                     <div class="detail-head">
                         <div>
-                            <h2 id="detailTitle">북문 정보</h2>
-                        </div>
-                        <div class="detail-pill" id="detailTag">추천 자취 지역</div>
-                    </div>
-
-                    <div class="detail-body">
-                        <div class="detail-info">
-                            <p id="detailDesc">
-                                북문 주변은 비교적 조용하고 주거 지역이 가까워 자취생 선호도가 높은 편입니다.
-                                밤에도 복잡하지 않아 생활 동선이 안정적인 편이에요.
-                            </p>
-
-                            <div class="detail-list">
-                                <div class="detail-item">
-                                    <strong>주변 분위기</strong>
-                                    <span id="detailMood">조용한 주거 밀집형</span>
-                                </div>
-                                <div class="detail-item">
-                                    <strong>추천 대상</strong>
-                                    <span id="detailTarget">자취생, 대학원생</span>
-                                </div>
-                                <div class="detail-item">
-                                    <strong>이동 편의</strong>
-                                    <span id="detailTraffic">도보 이동 편리</span>
-                                </div>
-                                <div class="detail-item">
-                                    <strong>체감 상권</strong>
-                                    <span id="detailStore">중간 수준</span>
-                                </div>
-                            </div>
+                            <h2>마이페이지</h2>
                         </div>
 
-                        <aside class="detail-side">
-                            <h3>한줄 팁</h3>
-                            <ul class="tips" id="detailTips">
-                                <li>자취방을 구한다면 북문 쪽 골목 시세를 먼저 확인해보세요.</li>
-                                <li>심야에는 서문보다 한산해서 귀가 동선이 단순한 편입니다.</li>
-                                <li>생활형 카페와 편의점 위주라 조용한 생활 패턴에 잘 맞아요.</li>
-                            </ul>
-                        </aside>
+                        <a href="/mypage" class="detail-pill">
+                            내 활동 관리
+                        </a>
                     </div>
+
+                    <!-- 활동 요약 -->
+
+                    <div class="mypage-dashboard">
+
+                        <div class="mypage-card">
+                            <div class="mypage-icon">❤️</div>
+                            <div class="mypage-title">찜한 방 수</div>
+                            <div class="mypage-number">12</div>
+                        </div>
+
+                        <div class="mypage-card">
+                            <div class="mypage-icon">🚨</div>
+                            <div class="mypage-title">신고 수</div>
+                            <div class="mypage-number">1</div>
+                        </div>
+
+                        <div class="mypage-card">
+                            <div class="mypage-icon">📝</div>
+                            <div class="mypage-title">작성 후기 수</div>
+                            <div class="mypage-number">8</div>
+                        </div>
+
+                    </div>
+
+                    
+
+                    
+
                 </div>
+
             </div>
         </section>
     </main>
