@@ -20,18 +20,40 @@
     <header class="site-header">
         <div class="container header-inner">
 
-            <a href="#" class="brand">
+            <a href="/" class="brand">
                 <div class="brand-icon">🏠</div>
                 <span>쪽문파티</span>
             </a>
 
             <div class="header-btns">
-                <button class="header-btn">설정</button>
+                <button class="header-btn" onclick="toggleSettingsPopup(event)">
+                    설정
+                </button>
                 <button class="header-btn">로그아웃</button>
             </div>
 
         </div>
     </header>
+
+        <!-- 설정 팝업 -->
+    <div class="settings-popup" id="settingsPopup">
+
+        <div class="popup-title">
+            화면 설정
+        </div>
+
+        <div class="darkmode-row">
+
+            <span>다크모드</span>
+
+            <label class="switch">
+                <input type="checkbox" id="darkModeToggle">
+                <span class="slider"></span>
+            </label>
+
+        </div>
+
+    </div>
 
     <main class="container">
 
@@ -236,6 +258,9 @@
         <br><br><br>
 
     </main>
+
+    <script src="{{ url_for('static', filename='mypage.js') }}"></script>
+
 
 </body>
 

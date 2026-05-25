@@ -42,7 +42,7 @@
                 onclick="window.open(this.href); return false;">
                 문의하기
                 </a>
-                <a href="/mypage" target="_blank">마이페이지</a>
+                <a href="/mypage">마이페이지</a>
                 <span class="nav-indicator" aria-hidden="true"></span>
             </nav>
 
@@ -60,7 +60,7 @@
                     </svg>
                 </button>
 
-                <a href="/mypage" target="_blank">
+                <a href="/mypage">
                     <button class="icon-btn" aria-label="프로필">
                         <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
                             <path
@@ -282,6 +282,8 @@
         </section>
     </main>
 
+    
     <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
 </html>

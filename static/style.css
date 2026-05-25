@@ -816,4 +816,30 @@ img {
             grid-template-columns: 1fr;
         }
     }
+
+    /* 메인페이지 다크모드 */
+
+.dark-mode {
+    background-color: #1f1f1f;
+    color: white;
+}
+
+.dark-mode .site-header,
+.dark-mode .room-card,
+.dark-mode .review-card,
+.dark-mode .section,
+.dark-mode .hero {
+    background-color: #2d2d2d;
+    color: white;
+}
+
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode p,
+.dark-mode span,
+.dark-mode div,
+.dark-mode a {
+    color: white;
+}
         
