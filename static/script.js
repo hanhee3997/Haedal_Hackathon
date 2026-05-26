@@ -94,14 +94,17 @@ function activateGate(key, scrollDetail = false) {
     card.classList.toggle("active", card.dataset.card === key);
   });
 
-  detailTitle.textContent = data.title;
-  detailTag.textContent = data.tag;
-  detailDesc.textContent = data.desc;
-  detailMood.textContent = data.mood;
-  detailTarget.textContent = data.target;
-  detailTraffic.textContent = data.traffic;
-  detailStore.textContent = data.store;
-  renderTips(data.tips);
+  if (detailTitle) detailTitle.textContent = data.title;
+  if (detailTag) detailTag.textContent = data.tag;
+  if (detailDesc) detailDesc.textContent = data.desc;
+  if (detailMood) detailMood.textContent = data.mood;
+  if (detailTarget) detailTarget.textContent = data.target;
+  if (detailTraffic) detailTraffic.textContent = data.traffic;
+  if (detailStore) detailStore.textContent = data.store;
+
+  if (detailTips) {
+    renderTips(data.tips);
+  }
 
   if (scrollDetail && detailSection) {
     detailSection.scrollIntoView({ behavior: "smooth", block: "start" });
