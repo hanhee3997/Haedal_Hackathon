@@ -54,8 +54,8 @@ def register():
 
         correct_code = verification_store.get(user_id)
         if not correct_code or user_code != correct_code:
-            error = '인증코드가 올바르지 않거나 만료되었습니다.'
-            return render_template('register.html', error=error)
+            error = "인증코드가 올바르지 않거나 만료되었습니다."
+            return render_template("register.html", error=error)
         
         if user_id in verification_store:
             del verification_store[user_id]
@@ -72,13 +72,14 @@ def register():
 @app.route('/send-code', methods=['POST'])
 def send_code():
     student_email = request.form.get('email', '').strip()
+    user_id = request.form.get('username', '').strip()
 
     if not student_email.endswith("@knu.ac.kr"):
         return "❌ 경북대 이메일(@knu.ac.kr)만 입력 가능합니다."
 
     try:
         code = str(random.randint(100000, 999999))
-        verification_store[student_email] = code
+        verification_store[user_id] = code
         
         msg = MIMEText(f"Auth Code: {code}", 'plain', 'us-ascii')
         msg['Subject'] = "KNU Party Verification"
