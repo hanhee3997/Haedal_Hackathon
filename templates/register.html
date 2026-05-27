@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,6 +14,7 @@
 
 <body class="login-page">
     <div class="login-card">
+
         <div class="brand-header">
             <div class="brand-text-wrap">
                 <span class="brand-title">자취파티</span>
@@ -38,24 +39,17 @@
 
             <div class="input-group">
                 <i class="fa-regular fa-envelope"></i>
-                <input type="email" name="email" placeholder="경북대 이메일 입력 (@knu.ac.kr)" required>
-            </div>
-
-            <div class="input-group">
-                <i class="fa-solid fa-key"></i>
-                <input type="text" name="code" placeholder="인증코드 입력" required>
+                <input type="email" name="email" placeholder="경북대 이메일 (@knu.ac.kr)" required>
             </div>
 
             <div class="input-group">
                 <i class="fa-solid fa-lock"></i>
                 <input type="password" name="password" placeholder="비밀번호 입력" required
                     pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};:\',.<>?/\\|`~]).{8,20}$"
-                    title="비밀번호는 영문, 숫자, 특수문자를 포함해 8~20자로 입력해주세요." aria-describedby="password-help">
+                    title="비밀번호는 영문, 숫자, 특수문자를 포함해 8~20자로 입력해주세요.">
             </div>
 
-            <p id="password-help" class="helper-text">
-                - 비밀번호는 영문, 숫자, 특수문자를 포함해 8~20자로 입력해주세요
-            </p>
+            <p class="helper-text">- 비밀번호는 영문, 숫자, 특수문자를 포함해 8~20자로 입력해주세요</p>
 
             <div class="input-group">
                 <i class="fa-solid fa-check"></i>
@@ -77,5 +71,4 @@
         </p>
     </div>
 </body>
-
 </html>

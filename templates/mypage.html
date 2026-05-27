@@ -70,7 +70,7 @@
                     </div>
 
                     <div class="profile-info">
-                        <h2>세훈님 안녕하세요 👋</h2>
+                        <h2>{{name}}님 안녕하세요 👋</h2>
                         <p>오늘도 좋은 자취방 찾아보세요!</p>
                     </div>
 
@@ -95,19 +95,19 @@
                 <div class="dashboard-card">
                     <div class="dashboard-icon">❤️</div>
                     <div class="dashboard-title">찜한 방 수</div>
-                    <div class="dashboard-number">12</div>
+                    <div class="dashboard-number">{{ wish_count }}</div>
                 </div>
 
                 <div class="dashboard-card">
                     <div class="dashboard-icon">🚨</div>
                     <div class="dashboard-title">신고 수</div>
-                    <div class="dashboard-number">1</div>
+                    <div class="dashboard-number">{{ report_count }}</div>
                 </div>
 
                 <div class="dashboard-card">
                     <div class="dashboard-icon">📝</div>
                     <div class="dashboard-title">작성 후기 수</div>
-                    <div class="dashboard-number">8</div>
+                    <div class="dashboard-number">{{ review_count }}</div>
                 </div>
 
             </div>

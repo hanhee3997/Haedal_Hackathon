@@ -4,6 +4,7 @@ import random
 import re
 import smtplib
 from email.mime.text import MIMEText
+from email.utils import formataddr
 from flask import Flask, flash, jsonify, redirect, render_template, request, session, url_for
 
 app = Flask(__name__)
@@ -16,18 +17,21 @@ PASSWORD_REGEX = re.compile(
     r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};:\'",.<>?/\\|`~]).{8,20}$'
 )
 
-MY_EMAIL = "자취파티공식계정@gmail.com"  
-MY_PASSWORD = "발급받은앱비밀번호"       
+RAW_EMAIL = "본인의_실제_구글계정@gmail.com"  
+RAW_PASSWORD = "xxxx xxxx xxxx xxxx"     
+
+MY_EMAIL = RAW_EMAIL.strip().encode('utf-8').decode('ascii', 'ignore')
+MY_PASSWORD = RAW_PASSWORD.replace(" ", "").strip().encode('utf-8').decode('ascii', 'ignore')
 
 verification_store = {}
 
 if not os.path.exists(CSV_FILE):
     with open(CSV_FILE, mode='w', encoding='utf-8', newline='') as f:
-        csv.writer(f).writerow(['location', 'sub_location', 'price', 'sunlight', 'review'])
+        csv.writer(f).writerow(['location', 'name', 'address', 'price', 'sunlight', 'pros_cons', 'recommend', 'honey_tip'])
 
 if not os.path.exists(USER_FILE):
     with open(USER_FILE, mode='w', encoding='utf-8', newline='') as f:
-        csv.writer(f).writerow(['name', 'username', 'password'])
+        csv.writer(f).writerow(['name', 'username', 'password', 'email'])
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -36,66 +40,33 @@ def register():
     if request.method == 'POST':
         name = request.form.get('name', '').strip()
         user_id = request.form.get('username', '').strip()
+        student_email = request.form.get('email', '').strip()
         user_pw = request.form.get('password', '').strip()
         user_pw_confirm = request.form.get('password_confirm', '').strip()
-        user_code = request.form.get('code', '').strip()
 
-        if not name or not user_id or not user_pw or not user_pw_confirm or not user_code:
+
+        if not name or not user_id or not student_email or not user_pw or not user_pw_confirm:
             error = '모든 항목을 입력해주세요.'
             return render_template('register.html', error=error)
 
+  
+        if not student_email.endswith("@knu.ac.kr"):
+            error = '경북대 이메일(@knu.ac.kr)로만 가입할 수 있습니다.'
+            return render_template('register.html', error=error)
+
+  
         if user_pw != user_pw_confirm:
             error = '비밀번호 확인이 일치하지 않습니다.'
             return render_template('register.html', error=error)
 
-        if not PASSWORD_REGEX.match(user_pw):
-            error = '비밀번호는 영문, 숫자, 특수문자를 포함해 8~20자로 입력해주세요.'
-            return render_template('register.html', error=error)
-
-        correct_code = verification_store.get(user_id)
-        if not correct_code or user_code != correct_code:
-            error = "인증코드가 올바르지 않거나 만료되었습니다."
-            return render_template("register.html", error=error)
-        
-        if user_id in verification_store:
-            del verification_store[user_id]
-
+   
         with open(USER_FILE, mode='a', encoding='utf-8', newline='') as f:
-            csv.writer(f).writerow([name, user_id, user_pw])
+            csv.writer(f).writerow([name, user_id, user_pw, student_email])
 
         flash('회원가입이 완료되었습니다. 로그인해주세요!', 'success')
         return redirect(url_for('login'))
 
     return render_template('register.html', error=error)
-
-
-@app.route('/send-code', methods=['POST'])
-def send_code():
-    student_email = request.form.get('email', '').strip()
-    user_id = request.form.get('username', '').strip()
-
-    if not student_email.endswith("@knu.ac.kr"):
-        return "❌ 경북대 이메일(@knu.ac.kr)만 입력 가능합니다."
-
-    try:
-        code = str(random.randint(100000, 999999))
-        verification_store[user_id] = code
-        
-        msg = MIMEText(f"Auth Code: {code}", 'plain', 'us-ascii')
-        msg['Subject'] = "KNU Party Verification"
-        msg['From'] = MY_EMAIL
-        msg['To'] = student_email
-
-        smtp = smtplib.SMTP('smtp.gmail.com', 587, timeout=10)
-        smtp.starttls()
-        smtp.login(MY_EMAIL, MY_PASSWORD)
-        smtp.sendmail(MY_EMAIL, student_email, msg.as_string())
-        smtp.quit()
-
-        return "📩 인증코드를 발송했습니다. 메일함을 확인하세요!"
-    except Exception as e:
-        return f"❌ 메일 발송 실패 (설정 확인 필요): {str(e)}"
-
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -110,9 +81,11 @@ def login():
                 next(reader, None)
                 for row in reader:
                     if len(row) >= 3 and row[1] == user_id and row[2] == user_pw:
-                        session['logged_in'] = True
-                        return redirect(url_for('home'))
-
+                        if len(row) >= 3 and row[1] == user_id and row[2] == user_pw:
+                            session['logged_in'] = True
+                            session['user_id'] = user_id  
+                            session['name'] = row[0]      
+                            return redirect(url_for('home'))
         error = '아이디/비번이 틀렸습니다.'
 
     return render_template('login.html', error=error)
@@ -120,7 +93,7 @@ def login():
 
 @app.route('/logout')
 def logout():
-    session.pop('logged_in', None)
+    session.clear()  
     return redirect(url_for('login'))
 
 
@@ -128,23 +101,38 @@ def logout():
 def home():
     if not session.get('logged_in'):
         return redirect(url_for('login'))
-    return render_template('index.html')
+    my_review_count = 0
+    if os.path.exists('reviews.csv'):
+        with open('reviews.csv', mode='r', encoding='utf-8') as f:
+            reader = csv.reader(f)
+            next(reader) 
+            for row in reader:
+                my_review_count += 1
 
+    return render_template('index.html', review_count=my_review_count)
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
-    if not session.get('logged_in'):
-        return jsonify({"status": "error", "message": "로그인이 필요한 서비스입니다."}), 401
-
     data = request.json or {}
-    loc     = data.get('location', '미정')
-    sub_loc = data.get('sub_location', '미정')
-    price   = data.get('price', '정보없음')
-    sun     = data.get('sunlight', '정보없음')
-    rev     = data.get('review', '내용없음')
-    with open(CSV_FILE, mode='a', encoding='utf-8', newline='') as f:
-        csv.writer(f).writerow([loc, sub_loc, price, sun, rev])
+    
+    row_data = [
+        data.get('location', '정보없음'),
+        data.get('name', '정보없음'),
+        data.get('address', '정보없음'),
+        data.get('price', '정보없음'),
+        data.get('sunlight', '정보없음'),
+        data.get('pros_cons', '정보없음'),
+        data.get('recommend', '정보없음'),
+        data.get('honey_tip', '정보없음')
+    ]
+    
+    
+    with open('reviews.csv', mode='a', encoding='utf-8', newline='') as f:
+        csv.writer(f).writerow(row_data)
+        
     return jsonify({"status": "success"}), 200
+        
+    
 
 
 @app.route('/location/<name>')
@@ -156,24 +144,37 @@ def show_reviews(name):
     if os.path.exists(CSV_FILE):
         with open(CSV_FILE, mode='r', encoding='utf-8') as f:
             reader = csv.reader(f)
-            next(reader, None)
+            next(reader, None) # 헤더 건너뜀
             for row in reader:
-                if len(row) >= 5 and row[0].strip() == target_name:
+                # 💡 인덱스를 8개 항목에 맞게 수정!
+                if len(row) >= 8 and row[0].strip() == target_name:
                     reviews.append({
-                        'sub': row[1],
-                        'price': row[2],
-                        'sun': row[3],
-                        'rev': row[4]
+                        'name': row[1],        # 자취방 이름
+                        'address': row[2],     # 주소
+                        'price': row[3],       # 가격
+                        'sun': row[4],         # 채광
+                        'pros_cons': row[5],   # 장단점
+                        'recommend': row[6],   # 추천여부
+                        'honey': row[7]        # 꿀팁
                     })
     return render_template('reviews.html', location=target_name, reviews=reviews)
-
 
 @app.route("/mypage")
 def mypage():
     if not session.get('logged_in'):
         return redirect(url_for('login'))
-    return render_template("mypage.html")
-
-
+    
+    user_name = session.get('name', '사용자')
+    user_id = session.get('user_id', '알수없음')
+    
+    review_count = 0
+    if os.path.exists('reviews.csv'):
+        with open('reviews.csv', mode='r', encoding='utf-8') as f:
+            review_count = len(list(csv.reader(f))) - 1 
+    
+    return render_template("mypage.html", 
+                           name=user_name, 
+                           id=user_id, 
+                           review_count=review_count)
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, port=5001)
