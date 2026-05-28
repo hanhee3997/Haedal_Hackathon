@@ -146,18 +146,17 @@
                     </div>
 
                 </div>
-
+                {% else %}
+                <p>작성한 후기가 없습니다.</p>
+                {% endfor %}
             </div>
-
         </section>
-
-        <!-- 찜한 방 -->
 
         <section class="section">
 
             <h2 class="section-title">내가 찜한 방</h2>
 
-           <div class="room-grid">
+            <div class="room-grid">
                 {% for room in my_wishlist %}
                 <div class="room-card">
                     <div class="room-image">🏡</div>
@@ -168,67 +167,11 @@
                         <div class="wish-badge">❤️ 찜 완료</div>
                     </div>
                 </div>
+                {% else %}
+                <p>아직 찜한 방이 없습니다.</p>
                 {% endfor %}
             </div>
-
-                <div class="room-card">
-
-                    <div class="room-image">
-                        🏢
-                    </div>
-
-                    <div class="room-content">
-
-                        <div class="room-title">서문 오피스텔</div>
-
-                        <div class="room-price">
-                            월세 45 / 관리비 5
-                        </div>
-
-                        <div class="room-desc">
-                            상권이 좋아 생활하기 편리한 위치예요.
-                        </div>
-
-                        <div class="wish-badge">
-                            ❤️ 찜 완료
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="room-card">
-
-                    <div class="room-image">
-                        🛏️
-                    </div>
-
-                    <div class="room-content">
-
-                        <div class="room-title">쪽문 자취방</div>
-
-                        <div class="room-price">
-                            월세 30 / 관리비 2
-                        </div>
-
-                        <div class="room-desc">
-                            통학이 편리하고 가격이 저렴한 방입니다.
-                        </div>
-
-                        <div class="wish-badge">
-                            ❤️ 찜 완료
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
         </section>
-
-        <br><br><br>
-
     </main>
 
     <script src="{{ url_for('static', filename='mypage.js') }}"></script>

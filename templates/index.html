@@ -274,6 +274,17 @@
 
             </div>
         </section>
+        
+        <section class="container" style="margin: 40px auto; padding: 20px; background: #f9f9f9; border-radius: 10px;">
+                <h2 style="margin-bottom: 20px;">🏠 최근 올라온 따끈따끈한 후기</h2>
+                {% for review in reviews %}
+                    <div style="padding: 15px; border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                        <h3 style="margin: 0; color: #00c399;">{{ review[1] }} ({{ review[0] }})</h3>
+                        <p style="margin: 5px 0;"><strong>장단점:</strong> {{ review[5] }}</p>
+                        <p style="margin: 5px 0;"><strong>꿀팁:</strong> {{ review[7] }}</p>
+                    </div>
+                {% endfor %}
+        </section>
     </main>
 
     

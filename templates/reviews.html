@@ -54,6 +54,42 @@
                                 🚨 신고하기
                             </a>
                         </div>
+                        <div style="margin-top: 15px;">
+                            <form action="/wish/{{ r.id }}" method="POST" style="display:inline;">
+                                <button type="submit" style="padding:6px 12px; border-radius:10px; background:#eafff4; color:#0c9b6b; font-size:12px; font-weight:700; border:1px solid #a9e8c9; cursor:pointer;">
+                                    ❤️ 찜하기
+                                </button>
+                            </form>
+                            
+                            <form action="/report/{{ r.id }}" method="POST" style="margin-top:14px; text-align:right;">
+                                <select name="reason" style="
+                                    padding:6px;
+                                    border-radius:8px;
+                                    border:1px solid #ddd;
+                                    font-size:12px;
+                                ">
+                                    <option>욕설/비방</option>
+                                    <option>허위 후기</option>
+                                    <option>광고/홍보</option>
+                                    <option>음란성 내용</option>
+                                    <option>기타</option>
+                                </select>
+    
+                                <button type="submit" style="
+                                    padding:6px 12px;
+                                    border-radius:10px;
+                                    background:#ffeaea;
+                                    color:#d33;
+                                    font-size:12px;
+                                    font-weight:700;
+                                    border:1px solid #ffb7b7;
+                                    margin-left:6px;
+                                    cursor:pointer;
+                                ">
+                                    🚨 신고하기
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
