@@ -6,6 +6,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.utils import formataddr
 from flask import Flask, flash, jsonify, redirect, render_template, request, session, url_for
+from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = 'prod_secure_knu_party_session_key_#99201@v!'
@@ -161,6 +162,23 @@ def show_reviews(name):
                     })
                     count+=1
     return render_template('reviews.html', location=target_name, reviews=reviews)
+
+@app.route('/report/<int:review_id>', methods=['POST'])
+def report(review_id):
+
+    reason = request.form.get('reason', '기타')
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    with open('reports.csv', mode='a', encoding='utf-8', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow([review_id, reason, now])
+
+    return """
+    <script>
+        alert('신고가 접수되었습니다.');
+        history.back();
+    </script>
+    """
 
 @app.route("/mypage")
 def mypage():
