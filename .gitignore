@@ -1,0 +1,4 @@
+reviews.csv
+__pycache__/
+venv/
+nohup.out

@@ -1,2 +1,2 @@
-user_id,review_id,reason,time
-ayeon0112,1,욕설/비방,2026-05-28 17:50:06
+reporter,reported_user,review_id,reason,time
+ayeon0112,testuser,쪽문_1,욕설/비방,2026-05-28 17:50:06

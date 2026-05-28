@@ -160,21 +160,22 @@ def show_reviews(name):
             next(reader, None) # 헤더 건너뜀
             for row in reader:
                 # 💡 인덱스를 8개 항목에 맞게 수정!
-                if len(row) >= 8 and row[0].strip() == target_name:
+                if len(row) >= 9 and row[1].strip() == target_name:
                     reviews.append({
-                        'id': count,
-                        'name': row[1],        # 자취방 이름
-                        'address': row[2],     # 주소
-                        'price': row[3],       # 가격
-                        'sun': row[4],         # 채광
-                        'pros_cons': row[5],   # 장단점
-                        'recommend': row[6],   # 추천여부
-                        'honey': row[7]        # 꿀팁
+                    'id': f"{target_name}_{count}",
+                    'writer': row[0],
+                    'name': row[2],
+                    'address': row[3],
+                    'price': row[4],
+                    'sun': row[5],
+                    'pros_cons': row[6],
+                    'recommend': row[7],
+                    'honey': row[8]
                     })
                     count+=1
     return render_template('reviews.html', location=target_name, reviews=reviews)
 
-@app.route('/report/<int:review_id>', methods=['POST'])
+@app.route('/report/<review_id>', methods=['POST'])
 def report(review_id):
 
     if not session.get('logged_in'):
@@ -190,6 +191,8 @@ def report(review_id):
             reader = csv.reader(f)
             next(reader, None)
 
+           
+
             for row in reader:
                 if len(row) >= 2:
                     if row[0] == user_id and row[1] == str(review_id):
@@ -199,11 +202,37 @@ def report(review_id):
                             history.back();
                         </script>
                         """
+    reported_writer = "알수없음"
 
+    with open(CSV_FILE, mode='r', encoding='utf-8') as f:
+        reader = csv.reader(f)
+        next(reader, None)
+    
+        count = 1
+    
+        for row in reader:
+    
+            if len(row) >= 9:
+    
+                location = row[1]
+                current_id = f"{location}_{count}"
+    
+                if current_id == review_id:
+                    reported_writer = row[0]
+                    break
+    
+                count += 1
+                
     # 신고 저장
     with open('reports.csv', mode='a', encoding='utf-8', newline='') as f:
         writer = csv.writer(f)
-        writer.writerow([user_id, review_id, reason, now])
+        writer.writerow([
+        user_id,
+        reported_writer,
+        review_id,
+        reason,
+        now
+        ])
 
     return """
     <script>
