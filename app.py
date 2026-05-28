@@ -1,3 +1,4 @@
+import hashlib
 import csv
 import os
 import re
