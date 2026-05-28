@@ -47,10 +47,12 @@
             </nav>
 
             <div class="header-actions">
-                 <a href="https://docs.google.com/forms/d/e/1FAIpQLScVM-U57exhN6qBWZbC28CPulMTfZEmzMRpEb0BrheHHVoiMQ/viewform?usp=header" target="_blank">
-                    <button style="padding:10px 20px; background:#00c399; color:white; border-radius:20px; font-weight:bold; font-size:15px; cursor:pointer;">
+                <a href="{{ url_for('go_review', location='main') }}" target="_blank" rel="noopener noreferrer">
+                    <button
+                        style="padding:10px 20px; background:#00c399; color:white; border-radius:20px; font-weight:bold; font-size:15px; cursor:pointer;">
                         ✍️ 후기 작성하기
                     </button>
+                </a>
                 </a>
                 <a href="/logout" style="color:red; font-weight:700; font-size:15px;">로그아웃</a>
                 <button class="icon-btn" aria-label="알림">

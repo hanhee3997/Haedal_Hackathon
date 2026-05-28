@@ -13,6 +13,9 @@ app.secret_key = 'prod_secure_knu_party_session_key_#99201@v!'
 
 CSV_FILE = 'reviews.csv'
 USER_FILE = 'users.csv'
+REPORT_FILE = 'reports.csv'
+WISH_FILE = 'wish.csv'
+REVIEW_CLICK_FILE = 'review_click.csv'
 
 PASSWORD_REGEX = re.compile(
     r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};:\'",.<>?/\\|`~]).{8,20}$'
@@ -25,6 +28,26 @@ MY_EMAIL = RAW_EMAIL.strip().encode('utf-8').decode('ascii', 'ignore')
 MY_PASSWORD = RAW_PASSWORD.replace(" ", "").strip().encode('utf-8').decode('ascii', 'ignore')
 
 verification_store = {}
+
+def ensure_file(file_path, header):
+    if not os.path.exists(file_path):
+        with open(file_path, mode='w', encoding='utf-8', newline='') as f:
+            csv.writer(f).writerow(header)
+
+def append_row(file_path, row):
+    with open(file_path, mode='a', encoding='utf-8', newline='') as f:
+        csv.writer(f).writerow(row)
+
+def count_rows_by_user(file_path, user_id):
+    count = 0
+    if os.path.exists(file_path):
+        with open(file_path, mode='r', encoding='utf-8') as f:
+            reader = csv.reader(f)
+            next(reader, None)
+            for row in reader:
+                if len(row) > 0 and row[0] == user_id:
+                    count += 1
+    return count
 
 if not os.path.exists(CSV_FILE):
     with open(CSV_FILE, mode='w', encoding='utf-8', newline='') as f:
@@ -40,10 +63,48 @@ if not os.path.exists(CSV_FILE):
             'honey_tip'
         ])
 
+ensure_file(CSV_FILE, [
+    'writer', 'location', 'name', 'address', 'price',
+    'sunlight', 'pros_cons', 'recommend', 'honey_tip'
+])
+ensure_file(USER_FILE, ['name', 'username', 'password', 'email'])
+ensure_file(REPORT_FILE, ['user_id', 'reported_writer', 'review_id', 'reason', 'created_at'])
+ensure_file(WISH_FILE, ['user_id', 'review_id', 'created_at'])
+ensure_file(REVIEW_CLICK_FILE, ['user_id', 'location', 'created_at'])
+
 if not os.path.exists(USER_FILE):
     with open(USER_FILE, mode='w', encoding='utf-8', newline='') as f:
         csv.writer(f).writerow(['name', 'username', 'password', 'email'])
 
+@app.route('/wish/<review_id>', methods=['POST'])
+def wish(review_id):
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+
+    user_id = session.get('user_id')
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    if os.path.exists(WISH_FILE):
+        with open(WISH_FILE, mode='r', encoding='utf-8') as f:
+            reader = csv.reader(f)
+            next(reader, None)
+            for row in reader:
+                if len(row) >= 2 and row[0] == user_id and row[1] == str(review_id):
+                    return """
+                    <script>
+                        alert('이미 찜한 방입니다.');
+                        history.back();
+                    </script>
+                    """
+
+    append_row(WISH_FILE, [user_id, review_id, now])
+
+    return """
+    <script>
+        alert('찜한 방에 추가되었습니다.');
+        history.back();
+    </script>
+    """
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -112,15 +173,20 @@ def logout():
 def home():
     if not session.get('logged_in'):
         return redirect(url_for('login'))
-    my_review_count = 0
-    if os.path.exists('reviews.csv'):
-        with open('reviews.csv', mode='r', encoding='utf-8') as f:
-            reader = csv.reader(f)
-            next(reader) 
-            for row in reader:
-                my_review_count += 1
 
-    return render_template('index.html', review_count=my_review_count)
+    user_id = session.get('user_id', '알수없음')
+
+    wish_count = count_rows_by_user(WISH_FILE, user_id)
+    report_count = count_rows_by_user(REPORT_FILE, user_id)
+    review_count = count_rows_by_user(REVIEW_CLICK_FILE, user_id)
+
+    return render_template(
+        'index.html',
+        wish_count=wish_count,
+        report_count=report_count,
+        review_count=review_count
+    )
+
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
@@ -245,18 +311,36 @@ def report(review_id):
 def mypage():
     if not session.get('logged_in'):
         return redirect(url_for('login'))
-    
+
     user_name = session.get('name', '사용자')
     user_id = session.get('user_id', '알수없음')
-    
-    review_count = 0
-    if os.path.exists('reviews.csv'):
-        with open('reviews.csv', mode='r', encoding='utf-8') as f:
-            review_count = len(list(csv.reader(f))) - 1 
-    
-    return render_template("mypage.html", 
-                           name=user_name, 
-                           id=user_id, 
-                           review_count=review_count)
+
+    wish_count = count_rows_by_user(WISH_FILE, user_id)
+    report_count = count_rows_by_user(REPORT_FILE, user_id)
+    review_count = count_rows_by_user(REVIEW_CLICK_FILE, user_id)
+
+    return render_template(
+        "mypage.html",
+        name=user_name,
+        id=user_id,
+        wish_count=wish_count,
+        report_count=report_count,
+        review_count=review_count
+    )
+
+@app.route('/go-review')
+def go_review():
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+
+    user_id = session.get('user_id')
+    location = request.args.get('location', 'main').strip()
+    now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+    append_row(REVIEW_CLICK_FILE, [user_id, location, now])
+
+    google_form_url = "https://docs.google.com/forms/d/e/1FAIpQLScVM-U57exhN6qBWZbC28CPulMTfZEmzMRpEb0BrheHHVoiMQ/viewform?usp=header"
+    return redirect(google_form_url)
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, port=5001)
