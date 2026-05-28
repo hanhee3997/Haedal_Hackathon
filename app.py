@@ -226,14 +226,16 @@ def report(review_id):
         
     except Exception as e:
         return f"신고 처리 중 오류가 발생했습니다: {str(e)}"
-
 @app.route("/mypage")
 def mypage():
     if not session.get('logged_in'): return redirect(url_for('login'))
     user_id = session.get('user_id', '알수없음')
+    user_email = session.get('email', '')
+    # 글 쓸 때 사용한 해시값도 계산해서 대비
+    user_hash = hashlib.sha256(user_email.encode()).hexdigest()[:8]
     
-    # 1. 리뷰 데이터 가져오기
-    all_reviews_dict = {}
+    # 1. 모든 리뷰 정보를 ID와 함께 로드
+    all_reviews = {}
     if os.path.exists(CSV_FILE):
         with open(CSV_FILE, mode='r', encoding='utf-8') as f:
             reader = csv.reader(f)
@@ -242,10 +244,20 @@ def mypage():
             for row in reader:
                 if len(row) >= 9:
                     rev_id = f"{row[1].strip()}_{count}"
-                    all_reviews_dict[rev_id] = row
+                    all_reviews[rev_id] = row
                     count += 1
     
-    # 2. 찜 데이터 가져오기
+    # 2. 내가 쓴 후기 (writer가 user_id 또는 user_hash인 경우 모두 포함)
+    my_reviews = []
+    if os.path.exists(CSV_FILE):
+        with open(CSV_FILE, mode='r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                # writer 필드가 내 id이거나 내 해시값이면 추가
+                if row.get('writer') == user_id or row.get('writer') == user_hash:
+                    my_reviews.append(row)
+    
+    # 3. 찜한 목록 (리뷰 정보 매칭)
     my_wishes = []
     if os.path.exists(WISH_FILE):
         with open(WISH_FILE, mode='r', encoding='utf-8') as f:
@@ -253,11 +265,11 @@ def mypage():
             next(reader, None)
             for row in reader:
                 if len(row) >= 2 and row[0] == user_id:
-                    rev_info = all_reviews_dict.get(row[1])
+                    rev_info = all_reviews.get(row[1])
                     if rev_info:
-                        my_wishes.append({'id': row[1], 'name': rev_info[2]})
-                        
-    return render_template("mypage.html", my_wishes=my_wishes)
+                        my_wishes.append({'id': row[1], 'name': rev_info[2], 'location': rev_info[1]})
+            
+    return render_template("mypage.html", my_reviews=my_reviews, my_wishes=my_wishes)
 
 @app.route('/go-review')
 def go_review():
