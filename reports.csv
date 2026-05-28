@@ -1,1 +1,1 @@
-user_id,review_id,reason,time
+reporter,reported_user,review_id,reason,time
