@@ -47,16 +47,12 @@
             </nav>
 
             <div class="header-actions">
-                <a href="{{ url_for('go_review', location='main') }}" target="_blank" rel="noopener noreferrer">
-                    <button
-                        style="padding:10px 20px; background:#00c399; color:white; border-radius:20px; font-weight:bold; font-size:15px; cursor:pointer;">
+                 <a href="https://docs.google.com/forms/d/e/1FAIpQLScVM-U57exhN6qBWZbC28CPulMTfZEmzMRpEb0BrheHHVoiMQ/viewform?usp=header" target="_blank">
+                    <button style="padding:10px 20px; background:#00c399; color:white; border-radius:20px; font-weight:bold; font-size:15px; cursor:pointer;">
                         ✍️ 후기 작성하기
                     </button>
                 </a>
-                </a>
                 <a href="/logout" style="color:red; font-weight:700; font-size:15px;">로그아웃</a>
-                <button class="icon-btn" aria-label="알림">
-                    <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M15 17h5l-1.4-1.4a2 2 0 0 1-.6-1.4V11a6 6 0 1 0-12 0v3.2a2 2 0 0 1-.6 1.4L4 17h5" />
                         <path d="M10 17a2 2 0 0 0 4 0" />
                     </svg>
@@ -82,7 +78,7 @@
                         <span>서문파티</span>
                     </button>
 
-                    <button class="map-label label-bukmun" data-gate="bukmun" aria-label="북문 보기" aria-pressed="fa">
+                    <button class="map-label label-bukmun" data-gate="bukmun" aria-label="북문 보기" aria-pressed="false">
                         <span>북문파티</span>
                     </button>
 
@@ -134,12 +130,8 @@
                     </article>
 
                     <article class="gate-card active" data-card="bukmun"
-<<<<<<< HEAD
-                        style="--card-color:#71cabd; --card-color-soft:#d6ece8; --card-color-pale:#f1f9f7;">                        <div class="gate-top">
-=======
                         style="--card-color:#71cabd; --card-color-soft:#d6ece8; --card-color-pale:#f1f9f7;">
                         <div class="gate-top">
->>>>>>> 00a59440995a8e7c43f00dbfe02c94f665be9c22
                             <div class="gate-title-wrap">
                                 <div class="gate-title">
                                     <h3>북문</h3>
@@ -178,7 +170,7 @@
                                     <h3>쪽문</h3>
                                     <span class="gate-badge">남쪽 출입구</span>
                                 </div>
-                                <p class="gate-desc">IT대와 공대가 가까워 IT대생과 공대생이 이용하기 좋아요.</p>
+                                <p class="gate-desc">정문과 가까워 통학하기 편리하고 교통이 좋아요.</p>
                             </div>
                         </div>
 
@@ -241,60 +233,48 @@
 
         <section id="detail">
             <div class="container">
-
                 <div class="detail-panel mypage-panel">
-
                     <div class="detail-head">
                         <div>
                             <h2>마이페이지</h2>
                         </div>
-
                         <a href="/mypage" class="detail-pill">
                             내 활동 관리
                         </a>
                     </div>
-
-                    <!-- 활동 요약 -->
-
                     <div class="mypage-dashboard">
-
                         <div class="mypage-card">
                             <div class="mypage-icon">❤️</div>
                             <div class="mypage-title">찜한 방 수</div>
                             <div class="mypage-number">{{ wish_count }}</div>
                         </div>
-
                         <div class="mypage-card">
                             <div class="mypage-icon">🚨</div>
                             <div class="mypage-title">신고 수</div>
                             <div class="mypage-number">{{ report_count }}</div>
                         </div>
-
                         <div class="mypage-card">
                             <div class="mypage-icon">📝</div>
                             <div class="mypage-title">작성 후기 수</div>
                             <div class="mypage-number">{{ review_count }}</div>
                         </div>
-
                     </div>
                 </div>
-
             </div>
         </section>
         
         <section class="container" style="margin: 40px auto; padding: 20px; background: #f9f9f9; border-radius: 10px;">
-                <h2 style="margin-bottom: 20px;">🏠 최근 올라온 따끈따끈한 후기</h2>
-                {% for review in reviews %}
-                    <div style="padding: 15px; border-bottom: 1px solid #ddd; margin-bottom: 10px;">
-                        <h3 style="margin: 0; color: #00c399;">{{ review[1] }} ({{ review[0] }})</h3>
-                        <p style="margin: 5px 0;"><strong>장단점:</strong> {{ review[5] }}</p>
-                        <p style="margin: 5px 0;"><strong>꿀팁:</strong> {{ review[7] }}</p>
-                    </div>
-                {% endfor %}
+            <h2 style="margin-bottom: 20px;">🏠 최근 올라온 따끈따끈한 후기</h2>
+            {% for review in reviews %}
+                <div style="padding: 15px; border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                    <h3 style="margin: 0; color: #00c399;">{{ review[1] }} ({{ review[0] }})</h3>
+                    <p style="margin: 5px 0;"><strong>장단점:</strong> {{ review[5] }}</p>
+                    <p style="margin: 5px 0;"><strong>꿀팁:</strong> {{ review[7] }}</p>
+                </div>
+            {% endfor %}
         </section>
     </main>
 
-    
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
