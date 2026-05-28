@@ -227,38 +227,29 @@ def report(review_id):
         
     except Exception as e:
         return f"신고 처리 중 오류가 발생했습니다: {str(e)}"
+
 @app.route("/mypage")
 def mypage():
     if not session.get('logged_in'): return redirect(url_for('login'))
     user_id = session.get('user_id', '알수없음')
+    user_name = session.get('name', '사용자')
     user_email = session.get('email', '')
-    # 글 쓸 때 사용한 해시값도 계산해서 대비
     user_hash = hashlib.sha256(user_email.encode()).hexdigest()[:8]
     
-    # 1. 모든 리뷰 정보를 ID와 함께 로드
-    all_reviews = {}
-    if os.path.exists(CSV_FILE):
-        with open(CSV_FILE, mode='r', encoding='utf-8') as f:
-            reader = csv.reader(f)
-            next(reader, None)
-            count = 1
-            for row in reader:
-                if len(row) >= 9:
-                    rev_id = f"{row[1].strip()}_{count}"
-                    all_reviews[rev_id] = row
-                    count += 1
-    
-    # 2. 내가 쓴 후기 (writer가 user_id 또는 user_hash인 경우 모두 포함)
+    # 1. 모든 리뷰 데이터 로드 (my_reviews 매칭용)
     my_reviews = []
+    all_reviews_list = [] # 전체 리뷰 리스트 (찜 매칭용)
+    
     if os.path.exists(CSV_FILE):
         with open(CSV_FILE, mode='r', encoding='utf-8') as f:
             reader = csv.DictReader(f)
             for row in reader:
-                # writer 필드가 내 id이거나 내 해시값이면 추가
+                all_reviews_list.append(row)
+                # 내 후기 필터링
                 if row.get('writer') == user_id or row.get('writer') == user_hash:
                     my_reviews.append(row)
     
-    # 3. 찜한 목록 (리뷰 정보 매칭)
+    # 2. 찜 데이터 로드
     my_wishes = []
     if os.path.exists(WISH_FILE):
         with open(WISH_FILE, mode='r', encoding='utf-8') as f:
@@ -266,12 +257,20 @@ def mypage():
             next(reader, None)
             for row in reader:
                 if len(row) >= 2 and row[0] == user_id:
-                    rev_info = all_reviews.get(row[1])
-                    if rev_info:
-                        my_wishes.append({'id': row[1], 'name': rev_info[2], 'location': rev_info[1]})
+                    my_wishes.append({'review_id': row[1]})
             
-    return render_template("mypage.html", my_reviews=my_reviews, my_wishes=my_wishes)
-
+    # 3. 요약 데이터 계산
+    wish_count = count_rows_by_user(WISH_FILE, user_id)
+    report_count = count_rows_by_user(REPORT_FILE, user_id)
+    review_count = len(my_reviews)
+            
+    return render_template("mypage.html", 
+                           name=user_name, 
+                           my_reviews=my_reviews, 
+                           my_wishes=my_wishes,
+                           wish_count=wish_count,
+                           report_count=report_count,
+                           review_count=review_count)
 @app.route('/go-review')
 def go_review():
     if not session.get('logged_in'): return redirect(url_for('login'))
