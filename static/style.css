@@ -819,6 +819,10 @@ img {
 
     /* 메인페이지 다크모드 */
 
+<<<<<<< HEAD
+=======
+/* 메인페이지 다크모드 */
+>>>>>>> 00a59440995a8e7c43f00dbfe02c94f665be9c22
 body.dark-mode {
     background-color: #1f1f1f;
     color: #f5f5f5;

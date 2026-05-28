@@ -47,10 +47,12 @@
             </nav>
 
             <div class="header-actions">
-                 <a href="https://docs.google.com/forms/d/e/1FAIpQLScVM-U57exhN6qBWZbC28CPulMTfZEmzMRpEb0BrheHHVoiMQ/viewform?usp=header" target="_blank">
-                    <button style="padding:10px 20px; background:#00c399; color:white; border-radius:20px; font-weight:bold; font-size:15px; cursor:pointer;">
+                <a href="{{ url_for('go_review', location='main') }}" target="_blank" rel="noopener noreferrer">
+                    <button
+                        style="padding:10px 20px; background:#00c399; color:white; border-radius:20px; font-weight:bold; font-size:15px; cursor:pointer;">
                         ✍️ 후기 작성하기
                     </button>
+                </a>
                 </a>
                 <a href="/logout" style="color:red; font-weight:700; font-size:15px;">로그아웃</a>
                 <button class="icon-btn" aria-label="알림">
@@ -132,7 +134,12 @@
                     </article>
 
                     <article class="gate-card active" data-card="bukmun"
+<<<<<<< HEAD
                         style="--card-color:#71cabd; --card-color-soft:#d6ece8; --card-color-pale:#f1f9f7;">                        <div class="gate-top">
+=======
+                        style="--card-color:#71cabd; --card-color-soft:#d6ece8; --card-color-pale:#f1f9f7;">
+                        <div class="gate-top">
+>>>>>>> 00a59440995a8e7c43f00dbfe02c94f665be9c22
                             <div class="gate-title-wrap">
                                 <div class="gate-title">
                                     <h3>북문</h3>
@@ -171,7 +178,7 @@
                                     <h3>쪽문</h3>
                                     <span class="gate-badge">남쪽 출입구</span>
                                 </div>
-                                <p class="gate-desc">정문과 가까워 통학하기 편리하고 교통이 좋아요.</p>
+                                <p class="gate-desc">IT대와 공대가 가까워 IT대생과 공대생이 이용하기 좋아요.</p>
                             </div>
                         </div>
 

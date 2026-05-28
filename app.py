@@ -12,11 +12,19 @@ from datetime import datetime
 app = Flask(__name__)
 app.secret_key = 'prod_secure_knu_party_session_key_#99201@v!'
 
+<<<<<<< HEAD
 CSV_FILE = '/home/ubuntu/Haedal_Hackathon/reviews.csv'
 USER_FILE = '/home/ubuntu/Haedal_Hackathon/users.csv'
 REPORT_FILE = '/home/ubuntu/Haedal_Hackathon/reports.csv'
 WISH_FILE = '/home/ubuntu/Haedal_Hackathon/wish.csv'
 REVIEW_CLICK_FILE = '/home/ubuntu/Haedal_Hackathon/review_click.csv'
+=======
+CSV_FILE = 'reviews.csv'
+USER_FILE = 'users.csv'
+REPORT_FILE = 'reports.csv'
+WISH_FILE = 'wish.csv'
+REVIEW_CLICK_FILE = 'review_click.csv'
+>>>>>>> 00a59440995a8e7c43f00dbfe02c94f665be9c22
 
 PASSWORD_REGEX = re.compile(
     r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};:\'",.<>?/\\|`~]).{8,20}$'
@@ -34,9 +42,54 @@ def ensure_file(file_path, header):
         with open(file_path, mode='w', encoding='utf-8', newline='') as f:
             csv.writer(f).writerow(header)
 
+<<<<<<< HEAD
 def append_row(file_path, row):
     with open(file_path, mode='a', encoding='utf-8', newline='') as f:
         csv.writer(f).writerow(row)
+=======
+def ensure_file(file_path, header):
+    if not os.path.exists(file_path):
+        with open(file_path, mode='w', encoding='utf-8', newline='') as f:
+            csv.writer(f).writerow(header)
+
+def append_row(file_path, row):
+    with open(file_path, mode='a', encoding='utf-8', newline='') as f:
+        csv.writer(f).writerow(row)
+
+def count_rows_by_user(file_path, user_id):
+    count = 0
+    if os.path.exists(file_path):
+        with open(file_path, mode='r', encoding='utf-8') as f:
+            reader = csv.reader(f)
+            next(reader, None)
+            for row in reader:
+                if len(row) > 0 and row[0] == user_id:
+                    count += 1
+    return count
+
+if not os.path.exists(CSV_FILE):
+    with open(CSV_FILE, mode='w', encoding='utf-8', newline='') as f:
+        csv.writer(f).writerow([
+            'writer',
+            'location',
+            'name',
+            'address',
+            'price',
+            'sunlight',
+            'pros_cons',
+            'recommend',
+            'honey_tip'
+        ])
+
+ensure_file(CSV_FILE, [
+    'writer', 'location', 'name', 'address', 'price',
+    'sunlight', 'pros_cons', 'recommend', 'honey_tip'
+])
+ensure_file(USER_FILE, ['name', 'username', 'password', 'email'])
+ensure_file(REPORT_FILE, ['user_id', 'reported_writer', 'review_id', 'reason', 'created_at'])
+ensure_file(WISH_FILE, ['user_id', 'review_id', 'created_at'])
+ensure_file(REVIEW_CLICK_FILE, ['user_id', 'location', 'created_at'])
+>>>>>>> 00a59440995a8e7c43f00dbfe02c94f665be9c22
 
 def count_rows_by_user(file_path, user_id):
     count = 0
@@ -129,7 +182,12 @@ def login():
                 reader = csv.reader(f)
                 next(reader, None)
                 for idx, row in enumerate(reader):
+<<<<<<< HEAD
                     if len(row) >= 4 and row[1] == user_id and row[2] == user_pw:
+=======
+                    if len(row) >= 3 and row[1] == user_id and row[2] == user_pw:
+                        if len(row) >= 3 and row[1] == user_id and row[2] == user_pw:
+>>>>>>> 00a59440995a8e7c43f00dbfe02c94f665be9c22
                             session['logged_in'] = True
                             session['user_id'] = user_id  
                             session['name'] = row[0]
@@ -150,6 +208,7 @@ def logout():
 def home():
     if not session.get('logged_in'):
         return redirect(url_for('login'))
+<<<<<<< HEAD
     reviews = []
     if os.path.exists(CSV_FILE):
         with open(CSV_FILE, mode='r', encoding='utf-8') as f:
@@ -165,10 +224,22 @@ def home():
     return render_template(
         'index.html',
         reviews=reviews, 
+=======
+
+    user_id = session.get('user_id', '알수없음')
+
+    wish_count = count_rows_by_user(WISH_FILE, user_id)
+    report_count = count_rows_by_user(REPORT_FILE, user_id)
+    review_count = count_rows_by_user(REVIEW_CLICK_FILE, user_id)
+
+    return render_template(
+        'index.html',
+>>>>>>> 00a59440995a8e7c43f00dbfe02c94f665be9c22
         wish_count=wish_count,
         report_count=report_count,
         review_count=review_count
     )
+<<<<<<< HEAD
 @app.route('/write', methods=['GET', 'POST'])
 def write():
     if request.method == 'POST':
@@ -199,6 +270,29 @@ def webhook():
         data = request.get_json() 
         if not data:
             return jsonify({"status": "error", "message": "No data"}), 400
+=======
+
+
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    data = request.json or {}
+    writer_id = session.get('user_id', '익명')
+    row_data = [
+    writer_id,
+    data.get('location', '정보없음'),
+    data.get('name', '정보없음'),
+    data.get('address', '정보없음'),
+    data.get('price', '정보없음'),
+    data.get('sunlight', '정보없음'),
+    data.get('pros_cons', '정보없음'),
+    data.get('recommend', '정보없음'),
+    data.get('honey_tip', '정보없음')
+ ]
+    
+    
+    with open('reviews.csv', mode='a', encoding='utf-8', newline='') as f:
+        csv.writer(f).writerow(row_data)
+>>>>>>> 00a59440995a8e7c43f00dbfe02c94f665be9c22
         
         row_data = [
             'webhook',
@@ -225,9 +319,11 @@ def show_reviews(name):
         return redirect(url_for('login'))
     target_name = name.strip()
     reviews = []
+    count=1
     if os.path.exists(CSV_FILE):
         with open(CSV_FILE, mode='r', encoding='utf-8') as f:
             reader = csv.reader(f)
+<<<<<<< HEAD
             next(reader, None) 
             for idx, row in enumerate(reader):
                 if len(row) >= 9 and row[1].strip() == target_name:
@@ -242,7 +338,24 @@ def show_reviews(name):
                         'pros_cons': row[6],
                         'recommend': row[7],
                         'honey': row[8]
+=======
+            next(reader, None) # 헤더 건너뜀
+            for row in reader:
+                # 💡 인덱스를 8개 항목에 맞게 수정!
+                if len(row) >= 9 and row[1].strip() == target_name:
+                    reviews.append({
+                    'id': f"{target_name}_{count}",
+                    'writer': row[0],
+                    'name': row[2],
+                    'address': row[3],
+                    'price': row[4],
+                    'sun': row[5],
+                    'pros_cons': row[6],
+                    'recommend': row[7],
+                    'honey': row[8]
+>>>>>>> 00a59440995a8e7c43f00dbfe02c94f665be9c22
                     })
+                    count+=1
     return render_template('reviews.html', location=target_name, reviews=reviews)
 @app.route('/report/<review_id>', methods=['POST'])
 def report(review_id):
@@ -278,13 +391,80 @@ def report(review_id):
     except Exception as e:
         return "<script>alert('신고 중 오류가 발생했습니다.'); history.back();</script>"
 
+@app.route('/report/<review_id>', methods=['POST'])
+def report(review_id):
+
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+
+    user_id = session.get('user_id')
+    reason = request.form.get('reason', '기타')
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    # 이미 신고했는지 확인
+    if os.path.exists('reports.csv'):
+        with open('reports.csv', mode='r', encoding='utf-8') as f:
+            reader = csv.reader(f)
+            next(reader, None)
+
+           
+
+            for row in reader:
+                if len(row) >= 2:
+                    if row[0] == user_id and row[1] == str(review_id):
+                        return """
+                        <script>
+                            alert('이미 신고한 게시물입니다.');
+                            history.back();
+                        </script>
+                        """
+    reported_writer = "알수없음"
+
+    with open(CSV_FILE, mode='r', encoding='utf-8') as f:
+        reader = csv.reader(f)
+        next(reader, None)
+    
+        count = 1
+    
+        for row in reader:
+    
+            if len(row) >= 9:
+    
+                location = row[1]
+                current_id = f"{location}_{count}"
+    
+                if current_id == review_id:
+                    reported_writer = row[0]
+                    break
+    
+                count += 1
+                
+    # 신고 저장
+    with open('reports.csv', mode='a', encoding='utf-8', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow([
+        user_id,
+        reported_writer,
+        review_id,
+        reason,
+        now
+        ])
+
+    return """
+    <script>
+        alert('신고가 접수되었습니다.');
+        history.back();
+    </script>
+    """
+
 @app.route("/mypage")
 def mypage():
     if not session.get('logged_in'):
         return redirect(url_for('login'))
-    
+
     user_name = session.get('name', '사용자')
     user_id = session.get('user_id', '알수없음')
+<<<<<<< HEAD
     wish_count = count_rows_by_user(WISH_FILE, user_id)
     report_count = count_rows_by_user(REPORT_FILE, user_id)
     review_count = count_rows_by_user(REVIEW_CLICK_FILE, user_id)
@@ -303,5 +483,35 @@ def mypage():
                            wish_count=wish_count,
                            report_count=report_count,
                            review_count=review_count)
+=======
+
+    wish_count = count_rows_by_user(WISH_FILE, user_id)
+    report_count = count_rows_by_user(REPORT_FILE, user_id)
+    review_count = count_rows_by_user(REVIEW_CLICK_FILE, user_id)
+
+    return render_template(
+        "mypage.html",
+        name=user_name,
+        id=user_id,
+        wish_count=wish_count,
+        report_count=report_count,
+        review_count=review_count
+    )
+
+@app.route('/go-review')
+def go_review():
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+
+    user_id = session.get('user_id')
+    location = request.args.get('location', 'main').strip()
+    now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+    append_row(REVIEW_CLICK_FILE, [user_id, location, now])
+
+    google_form_url = "https://docs.google.com/forms/d/e/1FAIpQLScVM-U57exhN6qBWZbC28CPulMTfZEmzMRpEb0BrheHHVoiMQ/viewform?usp=header"
+    return redirect(google_form_url)
+
+>>>>>>> 00a59440995a8e7c43f00dbfe02c94f665be9c22
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, port=5001)
