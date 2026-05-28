@@ -79,7 +79,7 @@ def login():
             with open(USER_FILE, mode='r', encoding='utf-8') as f:
                 reader = csv.reader(f)
                 next(reader, None)
-                for row in reader:
+                for idx, row in enumerate(reader):
                     if len(row) >= 3 and row[1] == user_id and row[2] == user_pw:
                         if len(row) >= 3 and row[1] == user_id and row[2] == user_pw:
                             session['logged_in'] = True
@@ -141,6 +141,7 @@ def show_reviews(name):
         return redirect(url_for('login'))
     target_name = name.strip()
     reviews = []
+    count=1
     if os.path.exists(CSV_FILE):
         with open(CSV_FILE, mode='r', encoding='utf-8') as f:
             reader = csv.reader(f)
@@ -149,6 +150,7 @@ def show_reviews(name):
                 # 💡 인덱스를 8개 항목에 맞게 수정!
                 if len(row) >= 8 and row[0].strip() == target_name:
                     reviews.append({
+                        'id': count,
                         'name': row[1],        # 자취방 이름
                         'address': row[2],     # 주소
                         'price': row[3],       # 가격
@@ -157,6 +159,7 @@ def show_reviews(name):
                         'recommend': row[6],   # 추천여부
                         'honey': row[7]        # 꿀팁
                     })
+                    count+=1
     return render_template('reviews.html', location=target_name, reviews=reviews)
 
 @app.route("/mypage")
