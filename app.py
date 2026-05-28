@@ -113,24 +113,28 @@ def home():
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
-    data = request.json or {}
-    
-    row_data = [
-        data.get('location', '정보없음'),
-        data.get('name', '정보없음'),
-        data.get('address', '정보없음'),
-        data.get('price', '정보없음'),
-        data.get('sunlight', '정보없음'),
-        data.get('pros_cons', '정보없음'),
-        data.get('recommend', '정보없음'),
-        data.get('honey_tip', '정보없음')
-    ]
-    
-    
-    with open('reviews.csv', mode='a', encoding='utf-8', newline='') as f:
-        csv.writer(f).writerow(row_data)
+    try:
+        data = request.get_json() # JSON 데이터를 명시적으로 가져옴
+        if not data:
+            return jsonify({"status": "error", "message": "No data"}), 400
         
-    return jsonify({"status": "success"}), 200
+        row_data = [
+            data.get('location', '정보없음'),
+            data.get('name', '정보없음'),
+            data.get('address', '정보없음'),
+            data.get('price', '정보없음'),
+            data.get('sunlight', '정보없음'),
+            data.get('pros_cons', '정보없음'),
+            data.get('recommend', '정보없음'),
+            data.get('honey_tip', '정보없음')
+        ]
+        
+        with open('reviews.csv', mode='a', encoding='utf-8', newline='') as f:
+            csv.writer(f).writerow(row_data)
+            
+        return jsonify({"status": "success"}), 200
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
         
     
 
@@ -144,9 +148,8 @@ def show_reviews(name):
     if os.path.exists(CSV_FILE):
         with open(CSV_FILE, mode='r', encoding='utf-8') as f:
             reader = csv.reader(f)
-            next(reader, None) # 헤더 건너뜀
+            next(reader, None) 
             for row in reader:
-                # 💡 인덱스를 8개 항목에 맞게 수정!
                 if len(row) >= 8 and row[0].strip() == target_name:
                     reviews.append({
                         'name': row[1],        # 자취방 이름
@@ -167,14 +170,17 @@ def mypage():
     user_name = session.get('name', '사용자')
     user_id = session.get('user_id', '알수없음')
     
-    review_count = 0
+    all_reviews = []
     if os.path.exists('reviews.csv'):
         with open('reviews.csv', mode='r', encoding='utf-8') as f:
-            review_count = len(list(csv.reader(f))) - 1 
+            reader = csv.DictReader(f)
+            for row in reader:
+                all_reviews.append(row)
     
+    my_wishlist = [] 
+
     return render_template("mypage.html", 
-                           name=user_name, 
-                           id=user_id, 
-                           review_count=review_count)
+                           my_reviews=all_reviews, 
+                           review_count=len(all_reviews))
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, port=5001)

@@ -143,7 +143,7 @@ img {
     width: 56px;
     height: 56px;
     flex-shrink: 0;
-    color: #6abbaf;
+    color: #63c6b7;
 }
 
 .brand-name {
@@ -819,27 +819,107 @@ img {
 
     /* 메인페이지 다크모드 */
 
-.dark-mode {
+body.dark-mode {
     background-color: #1f1f1f;
-    color: white;
+    color: #f5f5f5;
 }
 
-.dark-mode .site-header,
-.dark-mode .room-card,
-.dark-mode .review-card,
-.dark-mode .section,
-.dark-mode .hero {
-    background-color: #2d2d2d;
-    color: white;
+body.dark-mode .site-header {
+    background: rgba(33, 33, 33, 0.92);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.dark-mode h1,
-.dark-mode h2,
-.dark-mode h3,
-.dark-mode p,
-.dark-mode span,
-.dark-mode div,
-.dark-mode a {
-    color: white;
+body.dark-mode .brand-sub,
+body.dark-mode .main-nav,
+body.dark-mode .main-nav a,
+body.dark-mode .icon-btn,
+body.dark-mode .detail-head h2,
+body.dark-mode .detail-side h3 {
+    color: #f5f5f5;
+}
+
+body.dark-mode .icon-btn:hover {
+    background: #3a3a3a;
+}
+
+body.dark-mode .hero-map {
+    border-color: #404040;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-mode .gate-card,
+body.dark-mode .detail-panel,
+body.dark-mode .mypage-card,
+body.dark-mode .review-mini-card,
+body.dark-mode .meta-box,
+body.dark-mode .detail-item,
+body.dark-mode .detail-side,
+body.dark-mode .tips li {
+    background: #2d2d2d;
+    color: #f5f5f5;
+    border-color: #444;
+    box-shadow: none;
+}
+
+body.dark-mode .mypage-panel {
+    background: #262626;
+    color: #f5f5f5;
+}
+
+body.dark-mode .mypage-title,
+body.dark-mode .gate-desc,
+body.dark-mode .detail-info p,
+body.dark-mode .review-mini-card span,
+body.dark-mode .meta-box strong,
+body.dark-mode .tips li,
+body.dark-mode .detail-item strong {
+    color: #cfcfcf;
+}
+
+body.dark-mode .meta-box span,
+body.dark-mode .detail-item span,
+body.dark-mode .mypage-number {
+    color: #ffffff;
+}
+
+body.dark-mode .detail-body {
+    border-top: 1px solid #444;
+}
+
+body.dark-mode .detail-side {
+    border-left: 1px solid #444;
+    background: #252525;
+}
+
+body.dark-mode .detail-pill {
+    background: #3a3a3a;
+    color: #7de0cf;
+}
+
+body.dark-mode .gate-badge,
+body.dark-mode .wish-room {
+    background: #3a3a3a;
+    color: #7de0cf;
+}
+
+body.dark-mode .cta-btn {
+    box-shadow: none;
+}
+
+body.dark-mode .map-label {
+    background: #2d2d2d;
+    color: #7de0cf;
+    border-color: #49b39d;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
+}
+
+body.dark-mode .map-label:hover {
+    background: linear-gradient(270deg, #49b39d 0%, #3f9b8a 100%);
+    color: #ffffff;
+    border-color: #49b39d;
+}
+
+body.dark-mode .nav-indicator {
+    background: #7de0cf;
 }
         

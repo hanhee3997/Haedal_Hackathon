@@ -22,14 +22,16 @@
 
             <a href="/" class="brand">
                 <div class="brand-icon">🏠</div>
-                <span>쪽문파티</span>
+                <span>자취파티</span>
             </a>
 
             <div class="header-btns">
                 <button class="header-btn" onclick="toggleSettingsPopup(event)">
                     설정
                 </button>
-                <button class="header-btn">로그아웃</button>
+                <button class="header-btn" type="button" onclick="confirmLogout()">
+                    로그아웃
+                </button>
             </div>
 
         </div>
@@ -121,37 +123,22 @@
             <h2 class="section-title">내 후기 관리</h2>
 
             <div class="review-wrapper">
-
-                <div class="review-card">
-
-                    <div class="review-top">
-                        <div class="review-title">북문 원룸 후기</div>
-                        <div class="review-date">2026.05.25</div>
-                    </div>
-
-                    <div class="review-desc">
-                        조용하고 편의점이 가까워서 생활하기 좋았어요.
-                        다만 밤에는 골목이 조금 어두운 편입니다.
-                    </div>
-
-                    <div class="review-actions">
-                        <button class="small-btn edit-small">수정</button>
-                        <button class="small-btn delete-small">삭제</button>
-                    </div>
-
+            {% for review in my_reviews %}
+            <div class="review-card">
+                <div class="review-top">
+                    <div class="review-title">{{ review.title }}</div>
+                    <div class="review-date">{{ review.date }}</div>
                 </div>
-
-                <div class="review-card">
-
-                    <div class="review-top">
-                        <div class="review-title">서문 오피스텔 후기</div>
-                        <div class="review-date">2026.05.18</div>
-                    </div>
-
-                    <div class="review-desc">
-                        상권이 좋아서 밥 먹기 편하고 카페가 많아요.
-                        학교까지 걸어서 다니기 괜찮았습니다.
-                    </div>
+                <div class="review-desc">
+                    {{ review.content }}
+                </div>
+                <div class="review-actions">
+                    <button class="small-btn edit-small">수정</button>
+                    <button class="small-btn delete-small">삭제</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
 
                     <div class="review-actions">
                         <button class="small-btn edit-small">수정</button>
@@ -170,34 +157,19 @@
 
             <h2 class="section-title">내가 찜한 방</h2>
 
-            <div class="room-grid">
-
+           <div class="room-grid">
+                {% for room in my_wishlist %}
                 <div class="room-card">
-
-                    <div class="room-image">
-                        🏡
-                    </div>
-
+                    <div class="room-image">🏡</div>
                     <div class="room-content">
-
-                        <div class="room-title">북문 원룸</div>
-
-                        <div class="room-price">
-                            월세 35 / 관리비 3
-                        </div>
-
-                        <div class="room-desc">
-                            학교와 가까운 조용한 원룸입니다.
-                            편의점과 카페가 근처에 있어요.
-                        </div>
-
-                        <div class="wish-badge">
-                            ❤️ 찜 완료
-                        </div>
-
+                        <div class="room-title">{{ room.title }}</div>
+                        <div class="room-price">{{ room.price }}</div>
+                        <div class="room-desc">{{ room.desc }}</div>
+                        <div class="wish-badge">❤️ 찜 완료</div>
                     </div>
-
                 </div>
+                {% endfor %}
+            </div>
 
                 <div class="room-card">
 

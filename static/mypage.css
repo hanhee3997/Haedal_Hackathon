@@ -37,7 +37,7 @@ body {
     align-items: center;
     gap: 12px;
     text-decoration: none;
-    color: #3f9b8a;
+    color: #63c6b7;
     font-size: 24px;
     font-weight: 800;
 }
@@ -469,49 +469,94 @@ input:checked + .slider:before {
     transform: translateX(22px);
 }
 
-/* 다크모드 */
-
-.dark-mode {
-
+/* 마이페이지 다크모드 */
+body.dark-mode {
     background-color: #1f1f1f;
+    color: #f5f5f5;
+}
 
-    color: white;
+body.dark-mode .site-header {
+    background: rgba(33, 33, 33, 0.92);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+    body.dark-mode .brand,
+body.dark-mode .popup-title,
+body.dark-mode .darkmode-row span,
+body.dark-mode .section-title,
+body.dark-mode .review-title,
+body.dark-mode .room-title,
+body.dark-mode .dashboard-number,
+body.dark-mode .profile-info h2 {
+    color: #7de0cf;
+}
+
+
+body.dark-mode .profile-info p,
+body.dark-mode .dashboard-title,
+body.dark-mode .review-desc,
+body.dark-mode .room-desc,
+body.dark-mode .review-date,
+body.dark-mode .room-price {
+    color: #d3d3d3;
 }
 
 /* 카드 */
 
-.dark-mode .profile-card,
-.dark-mode .dashboard-card,
-.dark-mode .review-card,
-.dark-mode .room-card,
-.dark-mode .review-wrapper,
-.dark-mode .settings-popup,
-.dark-mode .site-header {
-
-    background-color: #2d2d2d;
-
-    color: white;
+body.dark-mode .profile-card {
+    background: linear-gradient(135deg, #2c3734, #25302d);
+    border: 2px solid #3f4d49;
+    color: #f5f5f5;
 }
-
-/* 글씨 */
-
-.dark-mode h1,
-.dark-mode h2,
-.dark-mode h3,
-.dark-mode p,
-.dark-mode span,
-.dark-mode div {
-
-    color: white;
+body.dark-mode .dashboard-card,
+body.dark-mode .review-wrapper,
+body.dark-mode .review-card,
+body.dark-mode .room-card,
+body.dark-mode .settings-popup {
+    background: #2d2d2d;
+    border-color: #444;
+    color: #f5f5f5;
+    box-shadow: none;
 }
-
-/* 버튼 */
-
-.dark-mode .header-btn,
-.dark-mode .edit-btn,
-.dark-mode .small-btn {
-
+body.dark-mode .dashboard-icon,
+body.dark-mode .wish-badge,
+body.dark-mode .room-image,
+body.dark-mode .profile-image {
+    background: #3a3a3a;
+    color: #7de0cf;
+}
+body.dark-mode .header-btn,
+body.dark-mode .edit-btn,
+body.dark-mode .small-btn {
     background-color: #3b3b3b;
+    color: #f5f5f5;
+}
 
-    color: white;
+body.dark-mode .header-btn:hover,
+body.dark-mode .edit-btn:hover,
+body.dark-mode .small-btn:hover {
+    background-color: #4a4a4a;
+}
+body.dark-mode .edit-small {
+    background: #21443d;
+    color: #7de0cf;
+}
+
+body.dark-mode .delete-small {
+    background: #4a2d2d;
+    color: #ff9d9d;
+}
+body.dark-mode .wish-badge {
+    background: #21443d;
+    color: #7de0cf;
+}
+body.dark-mode .slider {
+    background-color: #555;
+}
+body.dark-mode input:checked+.slider {
+    background-color: #49b39d;
+}
+body.dark-mode .header-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
