@@ -166,12 +166,33 @@ def show_reviews(name):
 @app.route('/report/<int:review_id>', methods=['POST'])
 def report(review_id):
 
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+
+    user_id = session.get('user_id')
     reason = request.form.get('reason', '기타')
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
+    # 이미 신고했는지 확인
+    if os.path.exists('reports.csv'):
+        with open('reports.csv', mode='r', encoding='utf-8') as f:
+            reader = csv.reader(f)
+            next(reader, None)
+
+            for row in reader:
+                if len(row) >= 2:
+                    if row[0] == user_id and row[1] == str(review_id):
+                        return """
+                        <script>
+                            alert('이미 신고한 게시물입니다.');
+                            history.back();
+                        </script>
+                        """
+
+    # 신고 저장
     with open('reports.csv', mode='a', encoding='utf-8', newline='') as f:
         writer = csv.writer(f)
-        writer.writerow([review_id, reason, now])
+        writer.writerow([user_id, review_id, reason, now])
 
     return """
     <script>
