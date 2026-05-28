@@ -28,7 +28,17 @@ verification_store = {}
 
 if not os.path.exists(CSV_FILE):
     with open(CSV_FILE, mode='w', encoding='utf-8', newline='') as f:
-        csv.writer(f).writerow(['location', 'name', 'address', 'price', 'sunlight', 'pros_cons', 'recommend', 'honey_tip'])
+        csv.writer(f).writerow([
+            'writer',
+            'location',
+            'name',
+            'address',
+            'price',
+            'sunlight',
+            'pros_cons',
+            'recommend',
+            'honey_tip'
+        ])
 
 if not os.path.exists(USER_FILE):
     with open(USER_FILE, mode='w', encoding='utf-8', newline='') as f:
@@ -115,17 +125,18 @@ def home():
 @app.route('/webhook', methods=['POST'])
 def webhook():
     data = request.json or {}
-    
+    writer_id = session.get('user_id', '익명')
     row_data = [
-        data.get('location', '정보없음'),
-        data.get('name', '정보없음'),
-        data.get('address', '정보없음'),
-        data.get('price', '정보없음'),
-        data.get('sunlight', '정보없음'),
-        data.get('pros_cons', '정보없음'),
-        data.get('recommend', '정보없음'),
-        data.get('honey_tip', '정보없음')
-    ]
+    writer_id,
+    data.get('location', '정보없음'),
+    data.get('name', '정보없음'),
+    data.get('address', '정보없음'),
+    data.get('price', '정보없음'),
+    data.get('sunlight', '정보없음'),
+    data.get('pros_cons', '정보없음'),
+    data.get('recommend', '정보없음'),
+    data.get('honey_tip', '정보없음')
+ ]
     
     
     with open('reviews.csv', mode='a', encoding='utf-8', newline='') as f:
