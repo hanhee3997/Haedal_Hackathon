@@ -246,11 +246,24 @@ def mypage():
         with open(CSV_FILE, mode='r', encoding='utf-8') as f:
             reader = csv.DictReader(f)
             for row in reader:
-                honey_tip_clean = row.get('honey_tip', '').replace('\n', '').replace('\r', '').replace(' ', '')
-                user_email_clean = user_email.replace(' ', '')
-                if row.get('writer') == 'webhook' and user_email_clean in honey_tip_clean:
-                    my_reviews.append(row)
-                elif row.get('writer') == user_id or row.get('writer') == 'webhook':
+               if row.get('writer') == 'writer':
+                    continue
+               writer = row.get('writer')
+               if not writer: 
+                   continue
+                
+               if writer.startswith('['):
+                    writer = row.get('location') # 밀렸다면 location 자리에 writer가 있음
+                    honey_tip = row.get('pros_cons') # 한 칸씩 밀렸다고 가정
+               else:
+                    honey_tip = row.get('honey_tip')
+                
+               clean_tip = str(honey_tip) if honey_tip else ''
+               honey_tip_clean = clean_tip.replace('\n', '').replace('\r', '').replace(' ', '')
+                
+               user_email_clean = user_email.replace(' ', '')
+                
+               if (writer == 'webhook' and user_email_clean in honey_tip_clean) or (writer == user_id):
                     my_reviews.append(row)
     # 2. 찜 데이터 로드
     my_wishes = []
@@ -268,7 +281,7 @@ def mypage():
     review_count = len(my_reviews)
     print(f"DEBUG: --------------------------------")
     print(f"DEBUG: 내가 찾은 후기 개수: {review_count}")
-    print(f"DEBUG: --------------------------------")
+    print(f"DEBUG: --------------------------------")        
     return render_template("mypage.html", 
                            name=user_name, 
                            my_reviews=my_reviews, 

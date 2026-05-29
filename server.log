@@ -65,3 +65,64 @@ nohup: ignoring input
 222.104.225.157 - - [29/May/2026 16:07:27] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
 222.104.225.157 - - [29/May/2026 16:07:29] "GET /location/북문 HTTP/1.1" 200 -
 222.104.225.157 - - [29/May/2026 16:07:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+[2026-05-29 16:08:33,091] ERROR in app: Exception on /mypage [GET]
+Traceback (most recent call last):
+  File "/home/ubuntu/Haedal_Hackathon/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Haedal_Hackathon/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Haedal_Hackathon/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Haedal_Hackathon/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Haedal_Hackathon/app.py", line 249, in mypage
+    honey_tip_clean = row.get('honey_tip', '').replace('\n', '').replace('\r', '').replace(' ', '')
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'replace'
+211.224.194.46 - - [29/May/2026 16:08:33] "[35m[1mGET /mypage HTTP/1.1[0m" 500 -
+[2026-05-29 16:08:35,112] ERROR in app: Exception on /mypage [GET]
+Traceback (most recent call last):
+  File "/home/ubuntu/Haedal_Hackathon/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Haedal_Hackathon/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Haedal_Hackathon/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Haedal_Hackathon/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Haedal_Hackathon/app.py", line 249, in mypage
+    honey_tip_clean = row.get('honey_tip', '').replace('\n', '').replace('\r', '').replace(' ', '')
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'replace'
+211.224.194.46 - - [29/May/2026 16:08:35] "[35m[1mGET /mypage HTTP/1.1[0m" 500 -
+211.224.194.46 - - [29/May/2026 16:08:38] "GET / HTTP/1.1" 200 -
+211.224.194.46 - - [29/May/2026 16:08:39] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 16:08:39] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 16:08:39] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+[2026-05-29 16:08:41,207] ERROR in app: Exception on /mypage [GET]
+Traceback (most recent call last):
+  File "/home/ubuntu/Haedal_Hackathon/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Haedal_Hackathon/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Haedal_Hackathon/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Haedal_Hackathon/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Haedal_Hackathon/app.py", line 249, in mypage
+    honey_tip_clean = row.get('honey_tip', '').replace('\n', '').replace('\r', '').replace(' ', '')
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'replace'
+211.224.194.46 - - [29/May/2026 16:08:41] "[35m[1mGET /mypage HTTP/1.1[0m" 500 -
