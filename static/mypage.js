@@ -48,17 +48,8 @@ window.onload = () => {
         toggle.checked = true;
     }
 };
-<<<<<<< HEAD
 function confirmLogout() {
     const isConfirmed = confirm("로그아웃 하시겠습니까?");
     if (isConfirmed) {
         location.href = "/logout";    
-=======
-
-function confirmLogout() {
-    const isConfirmed = confirm("로그아웃 하시겠습니까?");
-    if (isConfirmed) {
-        location.href = "/logout";
->>>>>>> 00a59440995a8e7c43f00dbfe02c94f665be9c22
-    }
 }
