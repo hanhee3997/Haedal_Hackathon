@@ -242,10 +242,13 @@ def mypage():
             reader = csv.DictReader(f)
             for row in reader:
                 all_reviews_list.append(row)
-                # 내 후기 필터링
-                if row.get('writer') == user_id or row.get('writer') == user_hash:
-                    my_reviews.append(row)
-    
+                print(f"데이터 확인: writer={row.get('writer')}, 나의 ID={user_id}")
+                writer_val = row.get('writer', '')
+                if writer_val == 'webhook':
+                    if '내이메일@naver.com' in row.get('honey_tip', ''):
+                        my_reviews.append(row)
+                    elif writer_val == user_id or writer_val == user_hash:
+                        my_reviews.append(row)
     # 2. 찜 데이터 로드
     my_wishes = []
     if os.path.exists(WISH_FILE):
