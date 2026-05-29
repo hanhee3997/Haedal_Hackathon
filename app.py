@@ -266,7 +266,9 @@ def mypage():
     wish_count = count_rows_by_user(WISH_FILE, user_id)
     report_count = count_rows_by_user(REPORT_FILE, user_id)
     review_count = len(my_reviews)
-            
+    print(f"DEBUG: --------------------------------")
+    print(f"DEBUG: 내가 찾은 후기 개수: {review_count}")
+    print(f"DEBUG: --------------------------------")
     return render_template("mypage.html", 
                            name=user_name, 
                            my_reviews=my_reviews, 
