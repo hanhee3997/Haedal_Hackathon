@@ -135,7 +135,7 @@ def home():
         wish_count=count_rows_by_user(WISH_FILE, user_id),
         report_count=count_rows_by_user(REPORT_FILE, user_id),
         review_count=count_rows_by_user(REVIEW_CLICK_FILE, user_id))
-@app.route('write', methods=['GET', 'POST'])
+@app.route('/write', methods=['GET', 'POST'])
 def write():
     if request.method == 'POST':
         user_email = session.get('email', 'anonymous')
