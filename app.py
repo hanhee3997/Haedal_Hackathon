@@ -250,7 +250,7 @@ def mypage():
                 user_email_clean = user_email.replace(' ', '')
                 if row.get('writer') == 'webhook' and user_email_clean in honey_tip_clean:
                     my_reviews.append(row)
-                elif row.get('writer') == user_id:
+                elif row.get('writer') == user_id or row.get('writer') == 'webhook':
                     my_reviews.append(row)
     # 2. 찜 데이터 로드
     my_wishes = []

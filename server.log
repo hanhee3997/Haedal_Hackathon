@@ -6,6 +6,33 @@ nohup: ignoring input
  * Running on http://127.0.0.1:5001
  * Running on http://172.31.13.107:5001
 [33mPress CTRL+C to quit[0m
-211.224.194.46 - - [29/May/2026 15:40:25] "GET /mypage HTTP/1.1" 200 -
-211.224.194.46 - - [29/May/2026 15:40:25] "[36mGET /static/mypage.css HTTP/1.1[0m" 304 -
-211.224.194.46 - - [29/May/2026 15:40:25] "[36mGET /static/mypage.js HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 15:44:23] "GET /mypage HTTP/1.1" 200 -
+211.224.194.46 - - [29/May/2026 15:44:23] "[36mGET /static/mypage.css HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 15:44:23] "[36mGET /static/mypage.js HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 15:44:28] "[36mGET /static/mypage.css HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 15:44:38] "GET / HTTP/1.1" 200 -
+211.224.194.46 - - [29/May/2026 15:44:38] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 15:44:38] "[36mGET /static/aa.png HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 15:44:38] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 15:44:38] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+107.178.193.96 - - [29/May/2026 15:45:00] "POST /webhook HTTP/1.1" 200 -
+211.224.194.46 - - [29/May/2026 15:45:02] "GET /location/북문 HTTP/1.1" 200 -
+211.224.194.46 - - [29/May/2026 15:45:02] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 15:45:29] "GET / HTTP/1.1" 200 -
+211.224.194.46 - - [29/May/2026 15:45:29] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 15:45:30] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 15:45:30] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 15:45:30] "[36mGET /static/aa.png HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 15:45:30] "GET /mypage HTTP/1.1" 200 -
+211.224.194.46 - - [29/May/2026 15:45:31] "[36mGET /static/mypage.css HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 15:45:31] "[36mGET /static/mypage.js HTTP/1.1[0m" 304 -
+222.104.225.157 - - [29/May/2026 15:51:32] "GET /location/북문 HTTP/1.1" 200 -
+222.104.225.157 - - [29/May/2026 15:51:32] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+222.104.225.157 - - [29/May/2026 15:51:41] "GET / HTTP/1.1" 200 -
+222.104.225.157 - - [29/May/2026 15:51:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+222.104.225.157 - - [29/May/2026 15:51:42] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+222.104.225.157 - - [29/May/2026 15:51:42] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+222.104.225.157 - - [29/May/2026 15:51:44] "GET /location/북문 HTTP/1.1" 200 -
+222.104.225.157 - - [29/May/2026 15:51:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+222.104.225.157 - - [29/May/2026 15:52:16] "GET /location/북문 HTTP/1.1" 200 -
+222.104.225.157 - - [29/May/2026 15:52:16] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
