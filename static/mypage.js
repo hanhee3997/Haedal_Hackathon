@@ -53,3 +53,4 @@ function confirmLogout() {
     if (isConfirmed) {
         location.href = "/logout";    
 }
+}
