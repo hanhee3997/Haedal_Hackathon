@@ -93,3 +93,7 @@ nohup: ignoring input
 211.224.194.46 - - [29/May/2026 14:27:18] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
 211.224.194.46 - - [29/May/2026 14:27:18] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
 211.224.194.46 - - [29/May/2026 14:28:23] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 14:29:47] "GET / HTTP/1.1" 200 -
+211.224.194.46 - - [29/May/2026 14:29:48] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 14:29:48] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 14:29:48] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
