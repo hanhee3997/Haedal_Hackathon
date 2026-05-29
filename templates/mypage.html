@@ -77,6 +77,11 @@
                     <div class="review-top">
                         <div class="review-title">익명 ({{ review.location }})</div>
                     </div>
+                    {% if review.image %}
+                    <div class="review-image">
+                        <img src="{{ review.image }}" alt="후기 사진" style="max-width: 100%; height: auto;">
+                    </div>
+                    {% endif %}
                     <div class="review-desc">
                         {{ review.pros_cons }}
                     </div>
