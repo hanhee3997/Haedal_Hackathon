@@ -479,13 +479,16 @@ body.dark-mode h1,
 body.dark-mode h2, 
 body.dark-mode h3, 
 body.dark-mode p, 
-body.dark-mode a {
+body.dark-mode a,
+body.dark-mode .review-desc,
+body.dark-mode .review-date,
+body.dark-mode .dashboard-title {
     color: #e0e0e0 !important;
-}
+} 
+
 body.dark-mode h2 {
     color: #ffffff !important;
 }
-
 
 body.dark-mode .dashboard-card,
 body.dark-mode .review-card,
@@ -496,12 +499,6 @@ body.dark-mode .settings-popup,
 body.dark-mode section[style*="background: #f9f9f9"] { 
     background-color: #1e1e1e !important;
 }
-body.dark-mode .review-desc,
-body.dark-mode .review-date,
-body.dark-mode .dashboard-title {
-    color: #aaaaaa !important; 
-}
-
 
 body.dark-mode .slider {
     background-color: #555 !important;
@@ -513,6 +510,4 @@ body:not(.dark-mode) .container article h3,
 body:not(.dark-mode) .container article p {
     color: #333333 !important; 
 }
-body.dark-mode section[style*="background: #f9f9f9"] {
-    background-color: #1e1e1e !important;
-}
+
