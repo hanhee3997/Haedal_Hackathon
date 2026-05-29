@@ -505,3 +505,6 @@ body:not(.dark-mode) .container article h3,
 body:not(.dark-mode) .container article p {
     color: #333333 !important; 
 }
+body.dark-mode section[style*="background: #f9f9f9"] {
+    background-color: #1e1e1e !important;
+}
