@@ -4,13 +4,12 @@ const toggle = document.getElementById("darkModeToggle");
 // 설정창 열기/닫기
 function toggleSettingsPopup(event) {
 
-    // 이벤트 전파 막기
     event.stopPropagation();
 
     popup.classList.toggle("show");
 }
 
-// 팝업 내부 클릭 시 안닫힘
+
 popup.addEventListener("click", function(event) {
 
     event.stopPropagation();
@@ -52,5 +51,21 @@ function confirmLogout() {
     const isConfirmed = confirm("로그아웃 하시겠습니까?");
     if (isConfirmed) {
         location.href = "/logout";    
+    }
 }
+function fixDarkModeStyles() {
+    const isDark = document.body.classList.contains("dark-mode");
+    
+    const sections = document.querySelectorAll('section, div');
+        sections.forEach(el => {
+        const style = window.getComputedStyle(el);
+        if (style.backgroundColor === "rgb(249, 249, 249)") {
+            el.style.setProperty("background-color", isDark ? "#1e1e1e" : "#f9f9f9", "important");
+            el.style.setProperty("color", isDark ? "#e0e0e0" : "#333333", "important");
+        }
+    });
 }
+
+document.getElementById("darkModeToggle").addEventListener("change", fixDarkModeStyles);
+
+window.addEventListener("load", fixDarkModeStyles);
