@@ -2,8 +2,9 @@ import hashlib
 import csv
 import os
 import re
-from flask import Flask, flash, jsonify, redirect, render_template, request, session, url_for
 from datetime import datetime
+from flask import Flask, flash, jsonify, redirect, render_template, request, session, url_for
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 app.secret_key = 'prod_secure_knu_party_session_key_#99201@v!'
@@ -25,6 +26,12 @@ USER_FILE = '/home/ubuntu/Haedal_Hackathon/users.csv'
 REPORT_FILE = '/home/ubuntu/Haedal_Hackathon/reports.csv'
 WISH_FILE = '/home/ubuntu/Haedal_Hackathon/wish.csv'
 REVIEW_CLICK_FILE = '/home/ubuntu/Haedal_Hackathon/review_click.csv'
+
+UPLOAD_FOLDER = 'static/uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
 
 def ensure_file(file_path, header):
     if not os.path.exists(file_path):
@@ -234,7 +241,6 @@ def mypage():
     user_email = session.get('email', '')
     
     my_reviews = []
-    print(f"DEBUG: CSV 파일 경로={CSV_FILE}, 존재 여부={os.path.exists(CSV_FILE)}")
 
     if os.path.exists(CSV_FILE):
         with open(CSV_FILE, mode='r', encoding='utf-8') as f:

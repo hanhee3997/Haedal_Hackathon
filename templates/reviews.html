@@ -44,6 +44,17 @@
                             <div class="detail-item"><strong>☀️ 채광:</strong> <span>{{ r.sun }}</span></div>
                             <div class="detail-item" style="grid-column: span 2;"><strong>🏠 상세 주소:</strong> <span>{{ r.address }}</span></div>
                             <div class="detail-item" style="grid-column: span 2;"><strong>📝 장단점:</strong> <p>{{ r.pros_cons }}</p></div>
+                            <div class="detail-item" style="grid-column: span 2;">
+                                <strong>📷 후기 사진:</strong>
+                                {% if r.image_url %}
+                                    <div style="margin-top:10px;">
+                                        <img src="{{ url_for('static', filename='uploads/' + r.image_url) }}" 
+                                             style="max-width: 100%; border-radius: 10px; border: 1px solid #ddd;">
+                                    </div>
+                                {% else %}
+                                    <p style="color: #ccc; font-size: 14px;">등록된 사진이 없습니다.</p>
+                                {% endif %}
+                            </div>
                             <div class="detail-item"><strong>👍 추천여부:</strong> <span>{{ r.recommend }}</span></div>
                             <div class="detail-item" style="grid-column: span 2;"><strong>💡 꿀팁:</strong> <p>{{ r.honey }}</p></div>
                            <div style="margin-top:15px; text-align:right;">

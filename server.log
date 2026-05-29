@@ -211,3 +211,160 @@ nohup: ignoring input
 222.104.225.157 - - [29/May/2026 15:06:01] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
 222.104.225.157 - - [29/May/2026 15:06:01] "[36mGET /static/aa.png HTTP/1.1[0m" 304 -
 222.104.225.157 - - [29/May/2026 15:06:01] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 15:10:22] "GET / HTTP/1.1" 200 -
+211.224.194.46 - - [29/May/2026 15:10:23] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 15:10:23] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 15:10:23] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+222.104.225.157 - - [29/May/2026 15:12:24] "GET / HTTP/1.1" 200 -
+222.104.225.157 - - [29/May/2026 15:12:24] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+222.104.225.157 - - [29/May/2026 15:12:25] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+222.104.225.157 - - [29/May/2026 15:12:25] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+222.104.225.157 - - [29/May/2026 15:12:25] "[36mGET /static/aa.png HTTP/1.1[0m" 304 -
+ * Detected change in '/home/ubuntu/Haedal_Hackathon/app.py', reloading
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 543-722-894
