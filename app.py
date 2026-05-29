@@ -252,8 +252,6 @@ def mypage():
                     my_reviews.append(row)
                 elif row.get('writer') == user_id:
                     my_reviews.append(row)
-                else:
-                    print("DEBUG: CSV 파일을 찾을 수 없습니다!!!")
     # 2. 찜 데이터 로드
     my_wishes = []
     if os.path.exists(WISH_FILE):
@@ -287,4 +285,4 @@ def go_review():
     return redirect(google_form_url)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True, port=5001)
+    app.run(host='0.0.0.0', debug=False, port=5001)
