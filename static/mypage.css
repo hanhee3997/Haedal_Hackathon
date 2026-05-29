@@ -487,5 +487,13 @@ body.dark-mode .site-header,
 body.dark-mode .settings-popup {
     background-color: #1e1e1e !important;
 }
+body.dark-mode .review-desc,
+body.dark-mode .review-date,
+body.dark-mode .dashboard-title {
+    color: #cccccc !important; 
+}
 
 
+body.dark-mode .slider {
+    background-color: #555 !important;
+}
