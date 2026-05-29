@@ -228,27 +228,25 @@ def report(review_id):
 @app.route("/mypage")
 def mypage():
     if not session.get('logged_in'): return redirect(url_for('login'))
-    user_id = session.get('user_id', '알수없음')
+    user_id = session.get('user_id')
     user_name = session.get('name', '사용자')
     user_email = session.get('email', '')
-    user_hash = hashlib.sha256(user_email.encode()).hexdigest()[:8]
     
-    # 1. 모든 리뷰 데이터 로드 (my_reviews 매칭용)
     my_reviews = []
-    all_reviews_list = [] # 전체 리뷰 리스트 (찜 매칭용)
-    
+    print(f"DEBUG: CSV 파일 경로={CSV_FILE}, 존재 여부={os.path.exists(CSV_FILE)}")
+
     if os.path.exists(CSV_FILE):
         with open(CSV_FILE, mode='r', encoding='utf-8') as f:
             reader = csv.DictReader(f)
             for row in reader:
-                all_reviews_list.append(row)
-                print(f"데이터 확인: writer={row.get('writer')}, 나의 ID={user_id}")
-                writer_val = row.get('writer', '')
-                if writer_val == 'webhook':
-                    if '내이메일@naver.com' in row.get('honey_tip', ''):
-                        my_reviews.append(row)
-                    elif writer_val == user_id or writer_val == user_hash:
-                        my_reviews.append(row)
+                honey_tip_clean = row.get('honey_tip', '').replace('\n', '').replace('\r', '').replace(' ', '')
+                user_email_clean = user_email.replace(' ', '')
+                if row.get('writer') == 'webhook' and user_email_clean in honey_tip_clean:
+                    my_reviews.append(row)
+                elif row.get('writer') == user_id:
+                    my_reviews.append(row)
+                else:
+                    print("DEBUG: CSV 파일을 찾을 수 없습니다!!!")
     # 2. 찜 데이터 로드
     my_wishes = []
     if os.path.exists(WISH_FILE):

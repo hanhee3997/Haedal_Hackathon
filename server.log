@@ -1,5 +1,65 @@
 nohup: ignoring input
  * Serving Flask app 'app'
  * Debug mode: on
-Address already in use
-Port 5001 is in use by another program. Either identify and stop that program, or start the server with a different port.
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://172.31.13.107:5001
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 478-968-163
+211.224.194.46 - - [29/May/2026 10:26:41] "GET /mypage HTTP/1.1" 200 -
+211.224.194.46 - - [29/May/2026 10:26:41] "[36mGET /static/mypage.css HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 10:26:41] "[36mGET /static/mypage.js HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 10:26:44] "GET /mypage HTTP/1.1" 200 -
+211.224.194.46 - - [29/May/2026 10:26:44] "[36mGET /static/mypage.css HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 10:26:44] "[36mGET /static/mypage.js HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 10:27:17] "GET / HTTP/1.1" 200 -
+211.224.194.46 - - [29/May/2026 10:27:17] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 10:27:18] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 10:27:18] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 10:27:18] "[36mGET /static/aa.png HTTP/1.1[0m" 304 -
+107.178.193.96 - - [29/May/2026 10:27:30] "POST /webhook HTTP/1.1" 200 -
+211.224.194.46 - - [29/May/2026 10:27:31] "GET /mypage HTTP/1.1" 200 -
+211.224.194.46 - - [29/May/2026 10:27:31] "[36mGET /static/mypage.css HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 10:27:31] "[36mGET /static/mypage.js HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 10:27:34] "GET /mypage HTTP/1.1" 200 -
+211.224.194.46 - - [29/May/2026 10:27:34] "[36mGET /static/mypage.css HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 10:27:34] "[36mGET /static/mypage.js HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 10:27:37] "GET /location/쪽문 HTTP/1.1" 200 -
+211.224.194.46 - - [29/May/2026 10:27:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+ * Detected change in '/home/ubuntu/Haedal_Hackathon/app.py', reloading
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=writer, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=writer, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=writer, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=writer, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+데이터 확인: writer=webhook, 나의 ID=haehaehae
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 478-968-163
