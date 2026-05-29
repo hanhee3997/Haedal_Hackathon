@@ -1,4 +1,4 @@
- * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -470,12 +470,20 @@ input:checked + .slider:before {
 }
 body.dark-mode {
     background-color: #121212 !important;
-    color: #ffffff !important;
+    color: #e0e0e0 !important;
 }
-
-body.dark-mode * {
-    color: #ffffff !important;
+body.dark-mode *:not(.slider) {
     border-color: #444 !important;
+}
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode p, 
+body.dark-mode a {
+    color: #e0e0e0 !important;
+}
+body.dark-mode h2 {
+    color: #ffffff !important;
 }
 
 
@@ -484,20 +492,20 @@ body.dark-mode .review-card,
 body.dark-mode .review-wrapper,
 body.dark-mode .room-card,
 body.dark-mode .site-header,
-body.dark-mode .settings-popup {
+body.dark-mode .settings-popup,
+body.dark-mode section[style*="background: #f9f9f9"] { 
     background-color: #1e1e1e !important;
 }
 body.dark-mode .review-desc,
 body.dark-mode .review-date,
 body.dark-mode .dashboard-title {
-    color: #cccccc !important; 
+    color: #aaaaaa !important; 
 }
 
 
 body.dark-mode .slider {
     background-color: #555 !important;
 }
-
 body:not(.dark-mode) .container h2 {
     color: #000000 !important; 
 }
