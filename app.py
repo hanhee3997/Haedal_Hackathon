@@ -245,26 +245,32 @@ def mypage():
     if os.path.exists(CSV_FILE):
         with open(CSV_FILE, mode='r', encoding='utf-8') as f:
             reader = csv.DictReader(f)
-            for row in reader:
-               if row.get('writer') == 'writer':
-                    continue
-               writer = row.get('writer')
-               if not writer: 
-                   continue
-                
-               if writer.startswith('['):
-                    writer = row.get('location') # 밀렸다면 location 자리에 writer가 있음
-                    honey_tip = row.get('pros_cons') # 한 칸씩 밀렸다고 가정
-               else:
-                    honey_tip = row.get('honey_tip')
-                
-               clean_tip = str(honey_tip) if honey_tip else ''
-               honey_tip_clean = clean_tip.replace('\n', '').replace('\r', '').replace(' ', '')
-                
-               user_email_clean = user_email.replace(' ', '')
-                
-               if (writer == 'webhook' and user_email_clean in honey_tip_clean) or (writer == user_id):
-                    my_reviews.append(row)
+        for row in reader:
+            # 1. 중복 헤더 무시
+            if row.get('writer') == 'writer':
+                continue
+            
+            # 2. writer 값이 없으면 건너뜀
+            writer = row.get('writer')
+            if not writer:
+                continue
+            
+            # 3. 데이터 밀림 보정 (writer 자리에 [가 있으면 한 칸 밀린 것)
+            if writer.startswith('['):
+                writer = row.get('location')
+                honey_tip = row.get('pros_cons')
+            else:
+                honey_tip = row.get('honey_tip')
+            
+            # 4. 안전한 문자열 처리
+            clean_tip = str(honey_tip) if honey_tip else ''
+            honey_tip_clean = clean_tip.replace('\n', '').replace('\r', '').replace(' ', '')
+            
+            user_email_clean = user_email.replace(' ', '')
+            
+            # 5. 최종 필터링 및 리스트 추가
+            if (writer == 'webhook' and user_email_clean in honey_tip_clean) or (writer == user_id):
+                my_reviews.append(row)
     # 2. 찜 데이터 로드
     my_wishes = []
     if os.path.exists(WISH_FILE):

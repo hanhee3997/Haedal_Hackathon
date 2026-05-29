@@ -126,3 +126,22 @@ Traceback (most recent call last):
                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 AttributeError: 'NoneType' object has no attribute 'replace'
 211.224.194.46 - - [29/May/2026 16:08:41] "[35m[1mGET /mypage HTTP/1.1[0m" 500 -
+[2026-05-29 16:22:45,440] ERROR in app: Exception on /mypage [GET]
+Traceback (most recent call last):
+  File "/home/ubuntu/Haedal_Hackathon/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Haedal_Hackathon/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Haedal_Hackathon/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Haedal_Hackathon/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Haedal_Hackathon/app.py", line 249, in mypage
+    if row.get('writer') == 'writer':
+                       ^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'replace'
+211.224.194.46 - - [29/May/2026 16:22:45] "[35m[1mGET /mypage HTTP/1.1[0m" 500 -
