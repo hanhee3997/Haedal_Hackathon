@@ -492,3 +492,217 @@ DEBUG: CSV 파일을 찾을 수 없습니다!!!211.224.194.46 - - [29/May/2026 1
 211.224.194.46 - - [29/May/2026 13:01:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
 211.224.194.46 - - [29/May/2026 13:01:01] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
 211.224.194.46 - - [29/May/2026 13:01:01] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+118.129.79.185 - - [29/May/2026 13:12:09] "[32mGET / HTTP/1.1[0m" 302 -
+118.129.79.185 - - [29/May/2026 13:12:09] "GET /login HTTP/1.1" 200 -
+118.129.79.185 - - [29/May/2026 13:12:10] "[36mGET /static/login.css HTTP/1.1[0m" 304 -
+118.129.79.185 - - [29/May/2026 13:12:10] "[36mGET /static/login.js HTTP/1.1[0m" 304 -
+118.129.79.185 - - [29/May/2026 13:12:25] "[32mPOST /login HTTP/1.1[0m" 302 -
+118.129.79.185 - - [29/May/2026 13:12:26] "GET / HTTP/1.1" 200 -
+118.129.79.185 - - [29/May/2026 13:12:26] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+118.129.79.185 - - [29/May/2026 13:12:27] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+118.129.79.185 - - [29/May/2026 13:12:27] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+118.129.79.185 - - [29/May/2026 13:12:27] "[36mGET /static/aa.png HTTP/1.1[0m" 304 -
+155.230.85.156 - - [29/May/2026 13:12:47] "POST /login HTTP/1.1" 200 -
+155.230.85.156 - - [29/May/2026 13:12:47] "[36mGET /static/login.css HTTP/1.1[0m" 304 -
+155.230.85.156 - - [29/May/2026 13:12:47] "[36mGET /static/login.js HTTP/1.1[0m" 304 -
+155.230.85.156 - - [29/May/2026 13:12:53] "[32mPOST /login HTTP/1.1[0m" 302 -
+155.230.85.156 - - [29/May/2026 13:12:53] "GET / HTTP/1.1" 200 -
+155.230.85.156 - - [29/May/2026 13:12:54] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+155.230.85.156 - - [29/May/2026 13:12:54] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+155.230.85.156 - - [29/May/2026 13:12:54] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+155.230.85.156 - - [29/May/2026 13:12:54] "[36mGET /static/aa.png HTTP/1.1[0m" 304 -
+155.230.85.156 - - [29/May/2026 13:12:56] "GET /mypage HTTP/1.1" 200 -
+155.230.85.156 - - [29/May/2026 13:12:57] "GET /static/mypage.css HTTP/1.1" 200 -
+155.230.85.156 - - [29/May/2026 13:12:57] "[36mGET /static/mypage.js HTTP/1.1[0m" 304 -
+118.129.79.185 - - [29/May/2026 13:13:02] "GET /mypage HTTP/1.1" 200 -
+118.129.79.185 - - [29/May/2026 13:13:03] "GET /static/mypage.css HTTP/1.1" 200 -
+118.129.79.185 - - [29/May/2026 13:13:03] "GET /static/mypage.js HTTP/1.1" 200 -
+118.129.79.185 - - [29/May/2026 13:13:27] "GET / HTTP/1.1" 200 -
+118.129.79.185 - - [29/May/2026 13:13:28] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+118.129.79.185 - - [29/May/2026 13:13:28] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+118.129.79.185 - - [29/May/2026 13:13:28] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+118.129.79.185 - - [29/May/2026 13:13:28] "[36mGET /static/aa.png HTTP/1.1[0m" 304 -
+118.129.79.185 - - [29/May/2026 13:13:38] "GET / HTTP/1.1" 200 -
+118.129.79.185 - - [29/May/2026 13:13:39] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+118.129.79.185 - - [29/May/2026 13:13:39] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+118.129.79.185 - - [29/May/2026 13:13:39] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+118.129.79.185 - - [29/May/2026 13:13:39] "[36mGET /static/aa.png HTTP/1.1[0m" 304 -
+118.129.79.185 - - [29/May/2026 13:13:41] "GET /mypage HTTP/1.1" 200 -
+118.129.79.185 - - [29/May/2026 13:13:42] "[36mGET /static/mypage.css HTTP/1.1[0m" 304 -
+118.129.79.185 - - [29/May/2026 13:13:42] "[36mGET /static/mypage.js HTTP/1.1[0m" 304 -
+118.129.79.185 - - [29/May/2026 13:13:49] "GET / HTTP/1.1" 200 -
+118.129.79.185 - - [29/May/2026 13:13:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+118.129.79.185 - - [29/May/2026 13:13:50] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+118.129.79.185 - - [29/May/2026 13:13:50] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+118.129.79.185 - - [29/May/2026 13:13:50] "[36mGET /static/aa.png HTTP/1.1[0m" 304 -
+118.129.79.185 - - [29/May/2026 13:13:58] "GET /mypage HTTP/1.1" 200 -
+118.129.79.185 - - [29/May/2026 13:13:59] "[36mGET /static/mypage.css HTTP/1.1[0m" 304 -
+118.129.79.185 - - [29/May/2026 13:13:59] "[36mGET /static/mypage.js HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 13:16:54] "GET / HTTP/1.1" 200 -
+211.224.194.46 - - [29/May/2026 13:16:54] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 13:16:54] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 13:16:54] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 13:17:04] "GET / HTTP/1.1" 200 -
+211.224.194.46 - - [29/May/2026 13:17:04] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 13:17:04] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+211.224.194.46 - - [29/May/2026 13:17:04] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+ * Detected change in '/home/ubuntu/Haedal_Hackathon/app.py', reloading
+
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일 경로=/home/ubuntu/Haedal_Hackathon/reviews.csv, 존재 여부=True
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+DEBUG: CSV 파일을 찾을 수 없습니다!!!
+ * Restarting with stat
+Traceback (most recent call last):
+  File "/home/ubuntu/Haedal_Hackathon/app.py", line 138, in <module>
+    @app.route('write', methods=['GET', 'POST'])
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Haedal_Hackathon/venv/lib/python3.12/site-packages/flask/sansio/scaffold.py", line 362, in decorator
+    self.add_url_rule(rule, endpoint, f, **options)
+  File "/home/ubuntu/Haedal_Hackathon/venv/lib/python3.12/site-packages/flask/sansio/scaffold.py", line 47, in wrapper_func
+    return f(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Haedal_Hackathon/venv/lib/python3.12/site-packages/flask/sansio/app.py", line 650, in add_url_rule
+    rule_obj = self.url_rule_class(rule, methods=methods, **options)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Haedal_Hackathon/venv/lib/python3.12/site-packages/werkzeug/routing/rules.py", line 474, in __init__
+    raise ValueError(f"URL rule '{string}' must start with a slash.")
+ValueError: URL rule 'write' must start with a slash.

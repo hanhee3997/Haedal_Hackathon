@@ -497,3 +497,11 @@ body.dark-mode .dashboard-title {
 body.dark-mode .slider {
     background-color: #555 !important;
 }
+
+body:not(.dark-mode) .container h2 {
+    color: #000000 !important; 
+}
+body:not(.dark-mode) .container article h3,
+body:not(.dark-mode) .container article p {
+    color: #333333 !important; 
+}
