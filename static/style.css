@@ -323,19 +323,18 @@ img {
 }
 
 .gate-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
+    display: block !important; /* Grid 대신 Block으로 변경 */
+    width: 100% !important;
 }
 
 .gate-card {
+    display: none !important;;
     background: rgba(255, 255, 255, 0.92);
     border-radius: 22px;
     border: 1.5px solid var(--card-color-soft, #ddd);
     box-shadow: 0 10px 24px rgba(42, 48, 58, 0.05);
     padding: 18px;
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    display: flex;
     flex-direction: column;
     min-height: 310px;
 }
@@ -346,6 +345,7 @@ img {
 }
 
 .gate-card.active {
+    display: flex !important;
     border-color: var(--card-color, #888);
     box-shadow: 0 16px 30px color-mix(in srgb, var(--card-color, #888) 20%, transparent);
 }
@@ -963,14 +963,20 @@ body.dark_mode .nav_indicator { background: #7de0cf; }
 
 .review-mini-card {
     display: block !important;
-    width: 100% !important;
     position: static !important; 
+    width: 100% !important;
     margin: 0 0 20px 0 !important;
     padding: 20px !important;
+    box-sizing: border-box !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+
     border: 1px solid #ddd !important;
     border-radius: 12px !important;
     background: #ffffff !important;
-    box-sizing: border-box !important;
     float: none !important;
     clear: both !important;
 }
