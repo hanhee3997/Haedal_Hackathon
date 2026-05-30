@@ -1,4 +1,27 @@
+.review-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    width: 100% !important;
+    position: relative !important;
+}
+
+.review-mini-card {
+    width: 100% !important;
+    margin-bottom: 0 !important; /* wrapper의 gap으로 간격 조절 */
+    display: block !important;
+}
+
+/* 2. 다크모드 적용 (전체 div가 아닌 '후기 관련 요소'만 타겟팅) */
+body.dark-mode .review-wrapper,
 body.dark-mode .review-mini-card {
-    background: #2d2d2d !important;
+    background-color: #2d2d2d !important;
+    color: #d3d3d3 !important;
+    border-color: #444 !important;
+}
+
+/* 추가: 혹시 텍스트가 안 보이는 곳이 있다면 이 부분에 클래스를 더 추가하세요 */
+body.dark-mode .review-mini-card strong,
+body.dark-mode .review-mini-card span {
     color: #d3d3d3 !important;
 }
