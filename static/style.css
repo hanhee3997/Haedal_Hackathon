@@ -465,7 +465,9 @@ img {
     border: 1px solid var(--line);
     border-radius: 26px;
     box-shadow: var(--card-shadow);
-    overflow: hidden;
+    verflow: visible !important; /* hidden 대신 visible로 변경 */
+    height: auto !important;     /* 높이를 내용물에 맞게 자동 조절 */
+    display: flow-root !important;
 }
 
 .detail-head {
@@ -964,7 +966,6 @@ body.dark_mode .nav_indicator { background: #7de0cf; }
     position: static !important; 
     margin: 0 0 20px 0 !important;
     padding: 15px !important;
-    border: 1px solid #ddd !important;
     border-radius: 12px !important;
     background: #ffffff !important;
     box-sizing: border-box !important;
@@ -1000,3 +1001,4 @@ body.dark-mode .review-mini-card h3,
 body.dark-mode .review-card h3 {
     color: #ffffff !important; 
 }
+
