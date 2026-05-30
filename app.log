@@ -311,3 +311,9 @@ nohup: ignoring input
 155.230.84.165 - - [30/May/2026 06:27:14] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
 155.230.84.165 - - [30/May/2026 06:27:14] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
 155.230.84.165 - - [30/May/2026 06:27:15] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+155.230.84.169 - - [30/May/2026 06:30:40] "GET / HTTP/1.1" 200 -
+155.230.84.169 - - [30/May/2026 06:30:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+155.230.84.169 - - [30/May/2026 06:30:41] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+155.230.84.169 - - [30/May/2026 06:30:41] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+155.230.84.169 - - [30/May/2026 06:30:48] "GET /location/쪽문 HTTP/1.1" 200 -
+155.230.84.169 - - [30/May/2026 06:30:49] "[36mGET /static/style.css HTTP/1.1[0m" 304 -

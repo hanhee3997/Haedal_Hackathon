@@ -56,10 +56,10 @@ if not os.path.exists(CSV_FILE):
     with open(CSV_FILE, mode='w', encoding='utf-8', newline='') as f:
         csv.writer(f).writerow([
             'writer', 'location', 'name', 'address', 'price', 
-            'sunlight', 'pros_cons', 'recommend', 'honey_tip', 'image_url'
+            'sunlight', 'pros_cons', 'recommend', 'honey_tip'
         ])
 
-ensure_file(CSV_FILE, ['writer', 'location', 'name', 'address', 'price', 'sunlight', 'pros_cons', 'recommend', 'honey_tip', 'image_url'])
+ensure_file(CSV_FILE, ['writer', 'location', 'name', 'address', 'price', 'sunlight', 'pros_cons', 'recommend', 'honey_tip'])
 ensure_file(USER_FILE, ['name', 'username', 'password', 'email'])
 ensure_file(REPORT_FILE, ['user_id', 'reported_writer', 'review_id', 'reason', 'created_at'])
 ensure_file(WISH_FILE, ['user_id', 'review_id', 'created_at'])
@@ -135,13 +135,18 @@ def home():
     if os.path.exists(CSV_FILE):
         with open(CSV_FILE, mode='r', encoding='utf-8') as f:
             reader = csv.reader(f)
-            next(reader, None)
-            reviews = list(reader)
+            header = next(reader, None)
+            
+            for row in reader:
+                if row:
+                    reviews.append(row)
     user_id = session.get('user_id', '알수없음')
-    return render_template('index.html', reviews=reviews,
+    return render_template('index.html', 
+        reviews=reversed(reviews),
         wish_count=count_rows_by_user(WISH_FILE, user_id),
         report_count=count_rows_by_user(REPORT_FILE, user_id),
-        review_count=count_rows_by_user(REVIEW_CLICK_FILE, user_id))
+        review_count=count_rows_by_user(REVIEW_CLICK_FILE, user_id)
+    )
 @app.route('/write', methods=['GET', 'POST'])
 def write():
     if request.method == 'POST':
@@ -170,20 +175,10 @@ def write():
 def webhook():
     try:
         data = request.json or {}
-        import json
-        print(json.dumps(data, ensure_ascii=False, indent=2))
-
         if not data:
             return jsonify({"status": "error", "message": "No data"}), 400
         writer_id = session.get('user_id', 'webhook')
-
-        image_data = data.get('image_url', [])
-
-        if isinstance(image_data, list) and len(image_data) > 0:
-            image_url = f"https://drive.google.com/uc?export=view&id={image_data[0]}"
-        else:
-            image_url = ''
-        row_data = [writer_id, data.get('location', '정보없음'), data.get('name', '정보없음'), data.get('address', '정보없음'), data.get('price', '정보없음'), data.get('sunlight', '정보없음'), data.get('pros_cons', '정보없음'), data.get('recommend', '정보없음'), data.get('honey_tip', '정보없음'), image_url]
+        row_data = [writer_id, data.get('location', '정보없음'), data.get('name', '정보없음'), data.get('address', '정보없음'), data.get('price', '정보없음'), data.get('sunlight', '정보없음'), data.get('pros_cons', '정보없음'), data.get('recommend', '정보없음'), data.get('honey_tip', '정보없음')]
         with open(CSV_FILE, mode='a', encoding='utf-8', newline='') as f:
             csv.writer(f).writerow(row_data)   
         return jsonify({"status": "success"}), 200
@@ -201,7 +196,7 @@ def show_reviews(name):
             next(reader, None)
             for row in reader:
                 if len(row) >= 9 and row[1].strip() == target_name:
-                    reviews.append({'id': f"{target_name}_{count}", 'writer': row[0], 'name': row[2], 'address': row[3], 'price': row[4], 'sun': row[5], 'pros_cons': row[6], 'recommend': row[7], 'honey': row[8], 'image_url' : row[9] if len(row) > 9 else ''})
+                    reviews.append({'id': f"{target_name}_{count}", 'writer': row[0], 'name': row[2], 'address': row[3], 'price': row[4], 'sun': row[5], 'pros_cons': row[6], 'recommend': row[7], 'honey': row[8]})
                     count += 1
     return render_template('reviews.html', location=target_name, reviews=reviews)
 
@@ -249,8 +244,7 @@ def mypage():
     user_id = session.get('user_id')
     user_name = session.get('name', '사용자')
     user_email = session.get('email', '')
-    user_hash = hashlib.sha256(user_email.encode()).hexdigest()[:8]
-
+    
     my_reviews = []
 
     # 1. 후기 데이터 로드 (메모리 보호를 위해 with 블록 안에서 처리)
@@ -277,7 +271,7 @@ def mypage():
                 email_no_space = user_email.replace(' ', '')
                 
                 # 필터링
-                if (writer == 'webhook' and email_no_space in tip_no_space) or (writer == user_hash):
+                if (writer == 'webhook' and email_no_space in tip_no_space) or (writer == user_id):
                     my_reviews.append(row)
 
     # 2. 찜 데이터 로드
