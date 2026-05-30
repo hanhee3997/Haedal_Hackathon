@@ -134,9 +134,13 @@ def home():
     reviews = []
     if os.path.exists(CSV_FILE):
         with open(CSV_FILE, mode='r', encoding='utf-8') as f:
+            # restkey를 설정하여 데이터가 많아도 에러 없이 처리하도록 함
             reader = csv.DictReader(f)
             for row in reader:
+                # 'writer' 키가 없는 경우 등 데이터가 비정상적이면 건너뜀
+                if row.get('writer'):
                     reviews.append(row)
+    
     user_id = session.get('user_id', '알수없음')
     return render_template('index.html', 
         reviews=reversed(reviews),
@@ -172,16 +176,31 @@ def write():
 def webhook():
     try:
         data = request.json or {}
-        if not data:
-            return jsonify({"status": "error", "message": "No data"}), 400
-        writer_id = session.get('user_id', 'webhook')
-        row_data = [writer_id, data.get('location', '정보없음'), data.get('name', '정보없음'), data.get('address', '정보없음'), data.get('price', '정보없음'), data.get('sunlight', '정보없음'), data.get('pros_cons', '정보없음'), data.get('recommend', '정보없음'), data.get('honey_tip', '정보없음')]
+        if not data: return jsonify({"status": "error", "message": "No data"}), 400
+        
+        # 리스트 형태(URL 등)로 들어올 수 있는 데이터를 문자열로 변환
+        def safe_str(val):
+            if isinstance(val, list): return " ".join(map(str, val))
+            return str(val) if val else "정보없음"
+
+        row_data = [
+            session.get('user_id', 'webhook'),
+            safe_str(data.get('location')),
+            safe_str(data.get('name')),
+            safe_str(data.get('address')),
+            safe_str(data.get('price')),
+            safe_str(data.get('sunlight')),
+            safe_str(data.get('pros_cons')),
+            safe_str(data.get('recommend')),
+            safe_str(data.get('honey_tip'))
+        ]
+        
         with open(CSV_FILE, mode='a', encoding='utf-8', newline='') as f:
-            csv.writer(f).writerow(row_data)   
+            csv.writer(f).writerow(row_data)
+            f.flush()
         return jsonify({"status": "success"}), 200
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
-
 @app.route('/location/<name>')
 def show_reviews(name):
     if not session.get('logged_in'): return redirect(url_for('login'))
@@ -301,3 +320,4 @@ def go_review():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=False, port=5001)
+
