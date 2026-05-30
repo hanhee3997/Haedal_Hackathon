@@ -951,8 +951,15 @@ body.dark-mode div * {
     color: #d3d3d3 !important;
 }
 .review-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    width: 100%;
+    display: flex !important;           /* 겹침을 강제로 정렬 */
+    flex-direction: column !important;  /* 위에서 아래로 쌓기 */
+    gap: 16px !important;              /* 간격 확보 */
+    position: relative !important;      /* 위치 기준점 설정 */
+    height: auto !important;            /* 높이 자동 조절 */
+}
+
+.review-mini-card {
+    position: relative !important;      /* 카드들이 서로 겹치지 않게 함 */
+    margin: 0 !important;               /* 불필요한 마진 제거 */
+    width: 100% !important;             /* 너비 확보 */
 }
