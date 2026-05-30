@@ -945,22 +945,23 @@ body.dark_mode .nav_indicator { background: #7de0cf; }
 
 
 .review-section {
-    position: relative !important;
     display: block !important;
+    position: relative !important;
     height: auto !important;
     min-height: 200px !important;
     margin: 40px auto !important;
     overflow: visible !important;
-    clear: both !important; /* 이전 요소와의 간섭 완벽 차단 */
+    clear: both !important;
 }
+
 .review-wrapper {
     display: block !important;
-    gap: 16px !important;
     width: 100% !important;
     padding: 0 !important;
     position: relative !important;
     height: auto !important;
     background: transparent !important;
+    /* gap은 grid/flex에서만 작동하므로 block에서는 무시됩니다 */
 } 
 
 .review-mini-card {
@@ -975,6 +976,11 @@ body.dark_mode .nav_indicator { background: #7de0cf; }
     box-sizing: border-box !important;
     float: none !important;
     clear: both !important;
+    
+    /* 혹시 모를 강제 위치값 초기화 */
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
 }
 
 .review-card {
@@ -987,6 +993,12 @@ body.dark_mode .nav_indicator { background: #7de0cf; }
     border-radius: 15px !important;
     background: #ffffff !important;
     box-sizing: border-box !important;
+    float: none !important;
+    clear: both !important;
+    
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
 }
 
 body.dark-mode .review-mini-card {
