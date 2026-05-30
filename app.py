@@ -180,15 +180,12 @@ def webhook():
     print("FORM =", request.form)
 
     try:
-        data = request.get_json(silent=True)
-
-        if not data:
-            data = request.form.to_dict()
+        data=request.get_json(silent=True)
 
         print("PARSED DATA =", data)
 
         if not data:
-            return jsonify({"status":"error","message":"No data"}), 400
+            return jsonify({"status":"error","massage":"No data"}),400
 
         def safe_str(val):
             if isinstance(val, list):
