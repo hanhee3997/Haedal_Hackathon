@@ -242,35 +242,33 @@ def mypage():
     
     my_reviews = []
 
+    # 1. 후기 데이터 로드 (메모리 보호를 위해 with 블록 안에서 처리)
     if os.path.exists(CSV_FILE):
         with open(CSV_FILE, mode='r', encoding='utf-8') as f:
             reader = csv.DictReader(f)
-        for row in reader:
-            # 1. 중복 헤더 무시
-            if row.get('writer') == 'writer':
-                continue
-            
-            # 2. writer 값이 없으면 건너뜀
-            writer = row.get('writer')
-            if not writer:
-                continue
-            
-            # 3. 데이터 밀림 보정 (writer 자리에 [가 있으면 한 칸 밀린 것)
-            if writer.startswith('['):
-                writer = row.get('location')
-                honey_tip = row.get('pros_cons')
-            else:
-                honey_tip = row.get('honey_tip')
-            
-            # 4. 안전한 문자열 처리
-            clean_tip = str(honey_tip) if honey_tip else ''
-            honey_tip_clean = clean_tip.replace('\n', '').replace('\r', '').replace(' ', '')
-            
-            user_email_clean = user_email.replace(' ', '')
-            
-            # 5. 최종 필터링 및 리스트 추가
-            if (writer == 'webhook' and user_email_clean in honey_tip_clean) or (writer == user_id):
-                my_reviews.append(row)
+            for row in reader:
+                # 헤더 중복 무시
+                if row.get('writer') == 'writer': continue
+                
+                writer = row.get('writer')
+                if not writer: continue
+                
+                # 데이터 밀림 보정
+                if writer.startswith('['):
+                    writer = row.get('location')
+                    honey_tip = row.get('pros_cons')
+                else:
+                    honey_tip = row.get('honey_tip')
+                
+                # 안전한 문자열 비교
+                clean_tip = str(honey_tip) if honey_tip else ''
+                tip_no_space = clean_tip.replace('\n', '').replace('\r', '').replace(' ', '')
+                email_no_space = user_email.replace(' ', '')
+                
+                # 필터링
+                if (writer == 'webhook' and email_no_space in tip_no_space) or (writer == user_id):
+                    my_reviews.append(row)
+
     # 2. 찜 데이터 로드
     my_wishes = []
     if os.path.exists(WISH_FILE):
@@ -282,19 +280,13 @@ def mypage():
                     my_wishes.append({'review_id': row[1]})
             
     # 3. 요약 데이터 계산
-    wish_count = count_rows_by_user(WISH_FILE, user_id)
-    report_count = count_rows_by_user(REPORT_FILE, user_id)
-    review_count = len(my_reviews)
-    print(f"DEBUG: --------------------------------")
-    print(f"DEBUG: 내가 찾은 후기 개수: {review_count}")
-    print(f"DEBUG: --------------------------------")        
     return render_template("mypage.html", 
                            name=user_name, 
                            my_reviews=my_reviews, 
                            my_wishes=my_wishes,
-                           wish_count=wish_count,
-                           report_count=report_count,
-                           review_count=review_count)
+                           wish_count=count_rows_by_user(WISH_FILE, user_id),
+                           report_count=count_rows_by_user(REPORT_FILE, user_id),
+                           review_count=len(my_reviews))
 @app.route('/go-review')
 def go_review():
     if not session.get('logged_in'): return redirect(url_for('login'))
