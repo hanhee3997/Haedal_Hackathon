@@ -63,7 +63,7 @@
                                 <strong>📷 후기 사진:</strong>
                                 {% if r.image_url %}
                                     <div style="margin-top:10px;">
-                                        <img src="{{ url_for('static', filename='uploads/' + r.image_url) }}" 
+                                        <img src="{{ r.image_url }}"
                                              style="max-width: 100%; border-radius: 10px; border: 1px solid #ddd;">
                                     </div>
                                 {% else %}
