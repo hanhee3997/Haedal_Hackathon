@@ -945,16 +945,19 @@ body.dark_mode .nav_indicator { background: #7de0cf; }
 
 
 .review-section.container {
+    position: relative !important;
+    display: block !important;
     height: auto !important;
     min-height: 200px !important;
-    display: block !important;
+    margin: 40px auto !important;
     overflow: visible !important;
-    margin: 40px auto !important; 
+    clear: both !important; /* 이전 요소와의 간섭 완벽 차단 */
 }
 .review-wrapper {
     display: block !important;
     gap: 16px !important;
     width: 100% !important;
+    padding: 0 !important;
     position: relative !important;
     height: auto !important;
     background: transparent !important;
@@ -965,10 +968,12 @@ body.dark_mode .nav_indicator { background: #7de0cf; }
     width: 100% !important;
     position: static !important; 
     margin: 0 0 20px 0 !important;
-    padding: 15px !important;
+    padding: 20px !important;
     border-radius: 12px !important;
     background: #ffffff !important;
     box-sizing: border-box !important;
+    float: none !important;
+    clear: both !important;
 }
 .review-card {
     display: block !important;
@@ -1001,4 +1006,3 @@ body.dark-mode .review-mini-card h3,
 body.dark-mode .review-card h3 {
     color: #ffffff !important; 
 }
-
