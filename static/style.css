@@ -953,11 +953,22 @@ body.dark_mode .nav_indicator { background: #7de0cf; }
 .review-mini-card {
     display: block !important;
     width: 100% !important;
-    position: static !important; /* 절대 위치 해제 */
-    margin: 0 !important;
+    position: static !important; 
+    margin: 0 0 20px 0 !important;
     padding: 15px !important;
     border: 1px solid #ddd !important;
     border-radius: 12px !important;
+    background: #ffffff !important;
+    box-sizing: border-box !important;
+}
+.review-card {
+    display: block !important;
+    width: 100% !important;
+    position: static !important;
+    margin: 0 0 20px 0 !important; /* 아래쪽 간격 추가 */
+    padding: 20px !important;
+    border: 1px solid #eee !important;
+    border-radius: 15px !important;
     background: #ffffff !important;
     box-sizing: border-box !important;
 }
@@ -968,9 +979,16 @@ body.dark-mode .review-mini-card {
     border-color: #444 !important;
 }
 
-body.dark-mode .review-mini-card strong,
-body.dark-mode .review-mini-card span,
-body.dark-mode .review-mini-card p,
-body.dark-mode .review-mini-card h3 {
+body.dark-mode .review-mini-card,
+body.dark-mode .review-card {
+    background-color: #2d2d2d !important;
+    border-color: #444 !important;
+}
+body.dark-mode .review-mini-card *,
+body.dark-mode .review-card * {
     color: #d3d3d3 !important;
+}
+body.dark-mode .review-mini-card h3,
+body.dark-mode .review-card h3 {
+    color: #ffffff !important; 
 }
