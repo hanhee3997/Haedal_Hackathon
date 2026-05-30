@@ -278,3 +278,8 @@ nohup: ignoring input
 155.230.84.165 - - [30/May/2026 01:13:21] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
 155.230.84.165 - - [30/May/2026 01:13:21] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
 155.230.84.165 - - [30/May/2026 01:13:21] "[36mGET /static/aa.png HTTP/1.1[0m" 304 -
+155.230.84.169 - - [30/May/2026 01:15:21] "GET / HTTP/1.1" 200 -
+155.230.84.169 - - [30/May/2026 01:15:21] "GET /static/style.css HTTP/1.1" 200 -
+155.230.84.169 - - [30/May/2026 01:15:21] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+155.230.84.169 - - [30/May/2026 01:15:21] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+155.230.84.169 - - [30/May/2026 01:15:22] "[36mGET /static/aa.png HTTP/1.1[0m" 304 -

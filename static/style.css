@@ -937,7 +937,17 @@ body.dark-mode .map-label:hover {
     color: #ffffff;
     border-color: #49b39d;
 }
-body.dark-mode .nav-indicator { background: #7de0cf; }
+body.dark_mode .nav_indicator { background: #7de0cf; }
+body.dark-mode section,
+body.dark-mode div {
+    background-color: #2d2d2d !important;
+    color: #d3d3d3 !important;
+}
+
+body.dark-mode section *,
+body.dark-mode div * {
+    color: #d3d3d3 !important;
+}
 .review-wrapper {
     display: flex;
     flex-direction: column;
