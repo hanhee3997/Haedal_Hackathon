@@ -170,7 +170,7 @@ def write():
 def webhook():
     try:
         data = request.json or {}
-	print("WEBHOOK DATA =", data)
+	print ("WEBHOOK DATA =", data)
 
         if not data:
             return jsonify({"status": "error", "message": "No data"}), 400
