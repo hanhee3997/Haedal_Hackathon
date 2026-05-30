@@ -1,0 +1,61 @@
+nohup: ignoring input
+ * Serving Flask app 'app'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://172.31.13.107:5001
+[33mPress CTRL+C to quit[0m
+155.230.85.156 - - [30/May/2026 06:06:00] "GET /location/서문 HTTP/1.1" 200 -
+155.230.85.156 - - [30/May/2026 06:06:01] "GET /static/style.css HTTP/1.1" 200 -
+155.230.84.169 - - [30/May/2026 06:06:12] "GET / HTTP/1.1" 200 -
+155.230.84.169 - - [30/May/2026 06:06:13] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+155.230.84.169 - - [30/May/2026 06:06:13] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+155.230.84.169 - - [30/May/2026 06:06:13] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+155.230.84.167 - - [30/May/2026 06:06:26] "GET / HTTP/1.1" 200 -
+155.230.84.167 - - [30/May/2026 06:06:27] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+155.230.84.167 - - [30/May/2026 06:06:27] "[36mGET /static/aa.png HTTP/1.1[0m" 304 -
+155.230.84.167 - - [30/May/2026 06:06:28] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+155.230.84.167 - - [30/May/2026 06:06:28] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+155.230.84.167 - - [30/May/2026 06:06:30] "[32mGET /go-review HTTP/1.1[0m" 302 -
+155.230.84.167 - - [30/May/2026 06:06:36] "[32mGET /go-review HTTP/1.1[0m" 302 -
+155.230.84.167 - - [30/May/2026 06:06:54] "GET / HTTP/1.1" 200 -
+155.230.84.167 - - [30/May/2026 06:06:54] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+155.230.84.167 - - [30/May/2026 06:06:55] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+155.230.84.167 - - [30/May/2026 06:06:55] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+155.230.84.167 - - [30/May/2026 06:06:55] "[36mGET /static/aa.png HTTP/1.1[0m" 304 -
+155.230.84.167 - - [30/May/2026 06:06:57] "[32mGET /go-review HTTP/1.1[0m" 302 -
+155.230.84.169 - - [30/May/2026 06:07:10] "[32mGET /go-review HTTP/1.1[0m" 302 -
+155.230.84.167 - - [30/May/2026 06:07:15] "[32mGET /go-review HTTP/1.1[0m" 302 -
+155.230.84.165 - - [30/May/2026 06:07:29] "GET / HTTP/1.1" 200 -
+155.230.84.165 - - [30/May/2026 06:07:29] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+155.230.84.165 - - [30/May/2026 06:07:29] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+155.230.84.165 - - [30/May/2026 06:07:30] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+155.230.84.169 - - [30/May/2026 06:07:30] "[32mGET /go-review HTTP/1.1[0m" 302 -
+155.230.84.165 - - [30/May/2026 06:07:49] "[32mGET /logout HTTP/1.1[0m" 302 -
+155.230.84.165 - - [30/May/2026 06:07:49] "GET /login HTTP/1.1" 200 -
+155.230.84.165 - - [30/May/2026 06:07:50] "[36mGET /static/login.js HTTP/1.1[0m" 304 -
+155.230.84.165 - - [30/May/2026 06:07:50] "[36mGET /static/login.css HTTP/1.1[0m" 304 -
+155.230.85.156 - - [30/May/2026 06:07:51] "GET / HTTP/1.1" 200 -
+155.230.85.156 - - [30/May/2026 06:07:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+155.230.85.156 - - [30/May/2026 06:07:52] "[36mGET /static/aa.png HTTP/1.1[0m" 304 -
+155.230.85.156 - - [30/May/2026 06:07:52] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+155.230.85.156 - - [30/May/2026 06:07:52] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+155.230.85.156 - - [30/May/2026 06:07:55] "[32mGET /logout HTTP/1.1[0m" 302 -
+155.230.85.156 - - [30/May/2026 06:07:56] "GET /login HTTP/1.1" 200 -
+155.230.85.156 - - [30/May/2026 06:07:56] "[36mGET /static/login.css HTTP/1.1[0m" 304 -
+155.230.85.156 - - [30/May/2026 06:07:56] "[36mGET /static/login.js HTTP/1.1[0m" 304 -
+155.230.84.165 - - [30/May/2026 06:07:58] "GET /register HTTP/1.1" 200 -
+155.230.84.165 - - [30/May/2026 06:07:58] "[36mGET /static/login.css HTTP/1.1[0m" 304 -
+155.230.85.156 - - [30/May/2026 06:08:01] "GET /register HTTP/1.1" 200 -
+155.230.85.156 - - [30/May/2026 06:08:01] "[36mGET /static/login.css HTTP/1.1[0m" 304 -
+155.230.85.156 - - [30/May/2026 06:08:04] "GET /login HTTP/1.1" 200 -
+155.230.85.156 - - [30/May/2026 06:08:04] "[36mGET /static/login.css HTTP/1.1[0m" 304 -
+155.230.85.156 - - [30/May/2026 06:08:04] "[36mGET /static/login.js HTTP/1.1[0m" 304 -
+155.230.84.169 - - [30/May/2026 06:08:10] "GET /location/테크노문 HTTP/1.1" 200 -
+155.230.84.169 - - [30/May/2026 06:08:10] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+155.230.85.156 - - [30/May/2026 06:08:10] "[32mPOST /login HTTP/1.1[0m" 302 -
+155.230.85.156 - - [30/May/2026 06:08:11] "GET / HTTP/1.1" 200 -
+155.230.85.156 - - [30/May/2026 06:08:11] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+155.230.85.156 - - [30/May/2026 06:08:11] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+155.230.85.156 - - [30/May/2026 06:08:11] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
