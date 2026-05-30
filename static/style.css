@@ -465,7 +465,7 @@ img {
     border: 1px solid var(--line);
     border-radius: 26px;
     box-shadow: var(--card-shadow);
-    verflow: visible !important; /* hidden 대신 visible로 변경 */
+    overflow: visible !important; /* hidden 대신 visible로 변경 */
     height: auto !important;     /* 높이를 내용물에 맞게 자동 조절 */
     display: flow-root !important;
 }
