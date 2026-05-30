@@ -176,7 +176,14 @@ def webhook():
         if not data:
             return jsonify({"status": "error", "message": "No data"}), 400
         writer_id = session.get('user_id', 'webhook')
-        row_data = [writer_id, data.get('location', '정보없음'), data.get('name', '정보없음'), data.get('address', '정보없음'), data.get('price', '정보없음'), data.get('sunlight', '정보없음'), data.get('pros_cons', '정보없음'), data.get('recommend', '정보없음'), data.get('honey_tip', '정보없음'), data.get('image_url', '')]
+
+        image_data = data.get('image_url', [])
+
+        if isinstance(image_data, list) and len(image_data) > 0:
+            image_url = f"https://drive.google.com/uc?export=view&id={image_data[0]}"
+        else:
+            image_url = ''
+        row_data = [writer_id, data.get('location', '정보없음'), data.get('name', '정보없음'), data.get('address', '정보없음'), data.get('price', '정보없음'), data.get('sunlight', '정보없음'), data.get('pros_cons', '정보없음'), data.get('recommend', '정보없음'), data.get('honey_tip', '정보없음'), image_url]
         with open(CSV_FILE, mode='a', encoding='utf-8', newline='') as f:
             csv.writer(f).writerow(row_data)   
         return jsonify({"status": "success"}), 200
