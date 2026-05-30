@@ -959,6 +959,7 @@ body.dark_mode .nav_indicator { background: #7de0cf; }
     border: 1px solid #ddd !important;
     border-radius: 12px !important;
     background: #ffffff !important;
+    box-sizing: border-box !important;
 }
 
 body.dark-mode .review-mini-card {
@@ -967,8 +968,9 @@ body.dark-mode .review-mini-card {
     border-color: #444 !important;
 }
 
-/* 추가: 혹시 텍스트가 안 보이는 곳이 있다면 이 부분에 클래스를 더 추가하세요 */
 body.dark-mode .review-mini-card strong,
-body.dark-mode .review-mini-card span {
+body.dark-mode .review-mini-card span,
+body.dark-mode .review-mini-card p,
+body.dark-mode .review-mini-card h3 {
     color: #d3d3d3 !important;
 }
