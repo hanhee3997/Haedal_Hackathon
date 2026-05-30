@@ -241,7 +241,8 @@ def mypage():
     user_id = session.get('user_id')
     user_name = session.get('name', '사용자')
     user_email = session.get('email', '')
-    
+    user_hash = hashlib.sha256(user_email.encode()).hexdigest()[:8]
+
     my_reviews = []
 
     # 1. 후기 데이터 로드 (메모리 보호를 위해 with 블록 안에서 처리)
@@ -268,7 +269,7 @@ def mypage():
                 email_no_space = user_email.replace(' ', '')
                 
                 # 필터링
-                if (writer == 'webhook' and email_no_space in tip_no_space) or (writer == user_id):
+                if (writer == 'webhook' and email_no_space in tip_no_space) or (writer == user_hash):
                     my_reviews.append(row)
 
     # 2. 찜 데이터 로드
