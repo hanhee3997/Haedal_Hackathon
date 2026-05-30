@@ -940,13 +940,21 @@ body.dark-mode .map-label:hover {
     border-color: #49b39d;
 }
 body.dark_mode .nav_indicator { background: #7de0cf; }
+
+
+.review-section.container {
+    height: auto !important;
+    min-height: 200px !important;
+    display: block !important;
+    overflow: visible !important;
+    margin: 40px auto !important; 
+}
 .review-wrapper {
-    display: flex !important;
-    flex-direction: column !important;
+    display: block !important;
     gap: 16px !important;
     width: 100% !important;
     position: relative !important;
-    height: auto !important; /* 높이 자동 설정 */
+    height: auto !important;
     background: transparent !important;
 }
 
