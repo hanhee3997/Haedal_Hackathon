@@ -56,10 +56,10 @@ if not os.path.exists(CSV_FILE):
     with open(CSV_FILE, mode='w', encoding='utf-8', newline='') as f:
         csv.writer(f).writerow([
             'writer', 'location', 'name', 'address', 'price', 
-            'sunlight', 'pros_cons', 'recommend', 'honey_tip'
+            'sunlight', 'pros_cons', 'recommend', 'honey_tip', 'image_url'
         ])
 
-ensure_file(CSV_FILE, ['writer', 'location', 'name', 'address', 'price', 'sunlight', 'pros_cons', 'recommend', 'honey_tip'])
+ensure_file(CSV_FILE, ['writer', 'location', 'name', 'address', 'price', 'sunlight', 'pros_cons', 'recommend', 'honey_tip', 'image_url'])
 ensure_file(USER_FILE, ['name', 'username', 'password', 'email'])
 ensure_file(REPORT_FILE, ['user_id', 'reported_writer', 'review_id', 'reason', 'created_at'])
 ensure_file(WISH_FILE, ['user_id', 'review_id', 'created_at'])
@@ -173,7 +173,7 @@ def webhook():
         if not data:
             return jsonify({"status": "error", "message": "No data"}), 400
         writer_id = session.get('user_id', 'webhook')
-        row_data = [writer_id, data.get('location', '정보없음'), data.get('name', '정보없음'), data.get('address', '정보없음'), data.get('price', '정보없음'), data.get('sunlight', '정보없음'), data.get('pros_cons', '정보없음'), data.get('recommend', '정보없음'), data.get('honey_tip', '정보없음')]
+        row_data = [writer_id, data.get('location', '정보없음'), data.get('name', '정보없음'), data.get('address', '정보없음'), data.get('price', '정보없음'), data.get('sunlight', '정보없음'), data.get('pros_cons', '정보없음'), data.get('recommend', '정보없음'), data.get('honey_tip', '정보없음'), data.get('image_url', '')]
         with open(CSV_FILE, mode='a', encoding='utf-8', newline='') as f:
             csv.writer(f).writerow(row_data)   
         return jsonify({"status": "success"}), 200
@@ -191,7 +191,7 @@ def show_reviews(name):
             next(reader, None)
             for row in reader:
                 if len(row) >= 9 and row[1].strip() == target_name:
-                    reviews.append({'id': f"{target_name}_{count}", 'writer': row[0], 'name': row[2], 'address': row[3], 'price': row[4], 'sun': row[5], 'pros_cons': row[6], 'recommend': row[7], 'honey': row[8]})
+                    reviews.append({'id': f"{target_name}_{count}", 'writer': row[0], 'name': row[2], 'address': row[3], 'price': row[4], 'sun': row[5], 'pros_cons': row[6], 'recommend': row[7], 'honey': row[8], 'image_url' : row[9] if len(row) > 9 else ''})
                     count += 1
     return render_template('reviews.html', location=target_name, reviews=reviews)
 

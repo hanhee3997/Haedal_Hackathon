@@ -946,16 +946,21 @@ body.dark_mode .nav_indicator { background: #7de0cf; }
     gap: 16px !important;
     width: 100% !important;
     position: relative !important;
+    height: auto !important; /* 높이 자동 설정 */
+    background: transparent !important;
 }
 
 .review-mini-card {
-    width: 100% !important;
-    margin-bottom: 0 !important; /* wrapper의 gap으로 간격 조절 */
     display: block !important;
+    width: 100% !important;
+    position: static !important; /* 절대 위치 해제 */
+    margin: 0 !important;
+    padding: 15px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 12px !important;
+    background: #ffffff !important;
 }
 
-/* 2. 다크모드 적용 (전체 div가 아닌 '후기 관련 요소'만 타겟팅) */
-body.dark-mode .review-wrapper,
 body.dark-mode .review-mini-card {
     background-color: #2d2d2d !important;
     color: #d3d3d3 !important;

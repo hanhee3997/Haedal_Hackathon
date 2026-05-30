@@ -139,7 +139,7 @@
                                     <h3>북문</h3>
                                     <span class="gate-badge">북쪽 출입구</span>
                                 </div>
-                                <p class="gate-desc">글로벌 프라자, 북문 맛집 거리, 버스 정류장 등 주요시설이 많습니다.</p>
+                                <p class="gate-desc">aa글로벌 프라자, 북문 맛집 거리, 버스 정류장 등 주요시설이 많습니다.</p>
                             </div>
                         </div>
 
@@ -267,13 +267,15 @@
         
         <section class="container" style="margin: 40px auto; padding: 20px; background: #f9f9f9; border-radius: 10px;">
             <h2 style="margin-bottom: 20px;">🏠 최근 올라온 따끈따끈한 후기</h2>
-            {% for review in reviews %}
-                <div style="padding: 15px; border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+            <div class="review-wrapper">
+                {% for review in reviews %}
+                <div class="review-mini-card">
                     <h3 style="margin: 0; color: #00c399;">{{ review[1] }} ({{ review[0] }})</h3>
                     <p style="margin: 5px 0;"><strong>장단점:</strong> {{ review[5] }}</p>
                     <p style="margin: 5px 0;"><strong>꿀팁:</strong> {{ review[7] }}</p>
                 </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </section>
     </main>
 
