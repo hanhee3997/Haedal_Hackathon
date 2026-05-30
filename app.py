@@ -170,6 +170,9 @@ def write():
 def webhook():
     try:
         data = request.json or {}
+
+	print("WEBHOOK DATA =", data)
+
         if not data:
             return jsonify({"status": "error", "message": "No data"}), 400
         writer_id = session.get('user_id', 'webhook')

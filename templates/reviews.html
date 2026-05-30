@@ -38,6 +38,21 @@
                         <h3 style="font-size:20px; font-weight:800;">
                             📍 {{ location }} · {{ r.name }} </h3>
                   </div>
+		    {% if r.image_url %}
+		    <div style="margin-top:15px;">
+			<img src="{{ r.image_url }}"
+				 alt="방 사진"
+				 style="
+					 width:100%;
+					 max-height:400px;
+					 object-fit:cover;
+					border-radius:12px;
+					border:1px solid #eee;
+			">
+
+</div>
+{% endif %}
+		
                   <div class="detail-info" style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px;">
                        <div class="detail-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                             <div class="detail-item"><strong>💰 월세/공과금:</strong> <span>{{ r.price }}</span></div>
