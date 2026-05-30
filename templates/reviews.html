@@ -36,45 +36,19 @@
                 <div class="detail-panel review-card">
                     <div class="detail-head">
                         <h3 style="font-size:20px; font-weight:800;">
-                            📍 {{ location }} · {{ r.name }} </h3>
-                  </div>
-		    {% if r.image_url %}
-		    <div style="margin-top:15px;">
-			<img src="{{ r.image_url }}"
-				 alt="방 사진"
-				 style="
-					 width:100%;
-					 max-height:400px;
-					 object-fit:cover;
-					border-radius:12px;
-					border:1px solid #eee;
-			">
-
-</div>
-{% endif %}
-		
-                  <div class="detail-info" style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px;">
-                       <div class="detail-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                            📍 {{ location }} · {{ r.name }} 
+                        </h3>
+                    </div>
+                    <div class="detail-info" style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px;">
+                        <div class="detail-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                             <div class="detail-item"><strong>💰 월세/공과금:</strong> <span>{{ r.price }}</span></div>
                             <div class="detail-item"><strong>☀️ 채광:</strong> <span>{{ r.sun }}</span></div>
                             <div class="detail-item" style="grid-column: span 2;"><strong>🏠 상세 주소:</strong> <span>{{ r.address }}</span></div>
                             <div class="detail-item" style="grid-column: span 2;"><strong>📝 장단점:</strong> <p>{{ r.pros_cons }}</p></div>
-                            <div class="detail-item" style="grid-column: span 2;">
-                                <strong>📷 후기 사진:</strong>
-                                {% if r.image_url %}
-                                    <div style="margin-top:10px;">
-                                        <img src="{{ r.image_url }}"
-                                             style="max-width: 100%; border-radius: 10px; border: 1px solid #ddd;">
-                                    </div>
-                                {% else %}
-                                    <p style="color: #ccc; font-size: 14px;">등록된 사진이 없습니다.</p>
-                                {% endif %}
-                            </div>
                             <div class="detail-item"><strong>👍 추천여부:</strong> <span>{{ r.recommend }}</span></div>
                             <div class="detail-item" style="grid-column: span 2;"><strong>💡 꿀팁:</strong> <p>{{ r.honey }}</p></div>
-                           <div style="margin-top:15px; text-align:right;">
-                            <div style="margin-top:15px; text-align:right; display:flex; justify-content:flex-end; gap:8px; flex-wrap:wrap;">
                             
+                            <div style="margin-top:15px; text-align:right; display:flex; justify-content:flex-end; gap:8px; flex-wrap:wrap; grid-column: span 2;">
                                 <form action="/wish/{{ r.id }}" method="POST" style="display:inline;">
                                     <button type="submit" style="
                                         padding:6px 12px;
@@ -131,4 +105,4 @@
         </div>
     </main>
 </body>
-</html>
+
