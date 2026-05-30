@@ -270,9 +270,9 @@
             <div class="review-wrapper">
                 {% for review in reviews %}
                 <div class="review-mini-card">
-                    <h3 style="margin: 0; color: #00c399;">{{ review.name }} ({{ review.location }})</h3>
-                    <p style="margin: 5px 0;"><strong>장단점:</strong> {{ review.pros_cons }}</p>
-                    <p style="margin: 5px 0;"><strong>꿀팁:</strong> {{ review.honey_tip }}</p>
+                    <h3 style="margin: 0; color: #00c399;">{{ review[1] }} ({{ review[0] }})</h3>
+                    <p style="margin: 5px 0;"><strong>장단점:</strong> {{ review[5] }}</p>
+                    <p style="margin: 5px 0;"><strong>꿀팁:</strong> {{ review[7] }}</p>
                 </div>
                 {% endfor %}
             </div>

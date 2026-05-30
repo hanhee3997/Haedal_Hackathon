@@ -1,5 +1,38 @@
 nohup: ignoring input
  * Serving Flask app 'app'
  * Debug mode: off
-Address already in use
-Port 5001 is in use by another program. Either identify and stop that program, or start the server with a different port.
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://172.31.13.107:5001
+Press CTRL+C to quit
+155.230.84.169 - - [30/May/2026 07:26:05] "GET /location/쪽문 HTTP/1.1" 200 -
+155.230.84.169 - - [30/May/2026 07:26:06] "GET /static/style.css HTTP/1.1" 304 -
+155.230.84.169 - - [30/May/2026 07:26:08] "GET / HTTP/1.1" 200 -
+155.230.84.169 - - [30/May/2026 07:26:08] "GET /static/style.css HTTP/1.1" 304 -
+155.230.84.169 - - [30/May/2026 07:26:10] "GET /static/script.js HTTP/1.1" 304 -
+155.230.84.169 - - [30/May/2026 07:26:10] "GET /static/main.js HTTP/1.1" 304 -
+155.230.84.169 - - [30/May/2026 07:26:12] "GET /go-review HTTP/1.1" 302 -
+107.178.193.97 - - [30/May/2026 07:26:22] "POST /webhook HTTP/1.1" 400 -
+155.230.84.169 - - [30/May/2026 07:26:22] "GET /location/쪽문 HTTP/1.1" 200 -
+155.230.84.169 - - [30/May/2026 07:26:23] "GET /static/style.css HTTP/1.1" 304 -
+155.230.84.153 - - [30/May/2026 07:27:21] "GET / HTTP/1.1" 302 -
+155.230.84.153 - - [30/May/2026 07:27:21] "GET /login HTTP/1.1" 200 -
+155.230.84.153 - - [30/May/2026 07:27:22] "GET /static/login.js HTTP/1.1" 200 -
+155.230.84.153 - - [30/May/2026 07:27:22] "GET /static/login.css HTTP/1.1" 200 -
+155.230.84.153 - - [30/May/2026 07:27:23] "GET /favicon.ico HTTP/1.1" 404 -
+211.235.89.164 - - [30/May/2026 07:29:13] "GET / HTTP/1.1" 302 -
+211.235.89.164 - - [30/May/2026 07:29:13] "GET /login HTTP/1.1" 200 -
+211.235.89.164 - - [30/May/2026 07:29:14] "GET /static/login.css HTTP/1.1" 200 -
+211.235.89.164 - - [30/May/2026 07:29:14] "GET /static/login.js HTTP/1.1" 200 -
+211.235.89.164 - - [30/May/2026 07:29:14] "GET /favicon.ico HTTP/1.1" 404 -
+211.235.89.164 - - [30/May/2026 07:29:17] "GET / HTTP/1.1" 302 -
+211.235.89.164 - - [30/May/2026 07:29:17] "GET /login HTTP/1.1" 200 -
+211.235.89.164 - - [30/May/2026 07:29:18] "GET /static/login.css HTTP/1.1" 200 -
+211.235.89.164 - - [30/May/2026 07:29:18] "GET /static/login.js HTTP/1.1" 200 -
+211.235.89.164 - - [30/May/2026 07:29:19] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [30/May/2026 07:38:55] "GET /location/쪽문 HTTP/1.1" 302 -
+155.230.84.169 - - [30/May/2026 07:39:06] "GET /location/쪽문 HTTP/1.1" 200 -
+155.230.84.169 - - [30/May/2026 07:39:06] "GET /static/style.css HTTP/1.1" 304 -
+27.0.238.71 - - [30/May/2026 07:41:39] "GET /location/쪽문 HTTP/1.1" 302 -
+27.0.238.71 - - [30/May/2026 07:41:39] "GET /login HTTP/1.1" 200 -

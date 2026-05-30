@@ -175,16 +175,25 @@ def write():
 @app.route('/webhook', methods=['POST'])
 def webhook():
     try:
-        data = request.json or {}
-        if not data: return jsonify({"status": "error", "message": "No data"}), 400
-        
-        # 리스트 형태(URL 등)로 들어올 수 있는 데이터를 문자열로 변환
+        print("========== WEBHOOK CALLED ==========")
+
+        data = request.get_json(force=True)
+        print("RECEIVED DATA:", data)
+
+        if not data:
+            print("NO DATA RECEIVED")
+            return jsonify({
+                "status": "error",
+                "message": "No data"
+            }), 400
+
         def safe_str(val):
-            if isinstance(val, list): return " ".join(map(str, val))
+            if isinstance(val, list):
+                return " ".join(map(str, val))
             return str(val) if val else "정보없음"
 
         row_data = [
-            session.get('user_id', 'webhook'),
+            "webhook",
             safe_str(data.get('location')),
             safe_str(data.get('name')),
             safe_str(data.get('address')),
@@ -194,13 +203,28 @@ def webhook():
             safe_str(data.get('recommend')),
             safe_str(data.get('honey_tip'))
         ]
-        
+
+        print("ROW DATA:", row_data)
+        print("CSV PATH:", CSV_FILE)
+
         with open(CSV_FILE, mode='a', encoding='utf-8', newline='') as f:
-            csv.writer(f).writerow(row_data)
-            f.flush()
-        return jsonify({"status": "success"}), 200
+            writer = csv.writer(f)
+            writer.writerow(row_data)
+
+        print("CSV SAVE SUCCESS")
+
+        return jsonify({
+            "status": "success"
+        }), 200
+
     except Exception as e:
-        return jsonify({"status": "error", "message": str(e)}), 500
+        print("WEBHOOK ERROR:", str(e))
+
+        return jsonify({
+            "status": "error",
+            "message": str(e)
+        }), 500
+
 @app.route('/location/<name>')
 def show_reviews(name):
     if not session.get('logged_in'): return redirect(url_for('login'))
@@ -214,6 +238,8 @@ def show_reviews(name):
                 if len(row) >= 9 and row[1].strip() == target_name:
                     reviews.append({'id': f"{target_name}_{count}", 'writer': row[0], 'name': row[2], 'address': row[3], 'price': row[4], 'sun': row[5], 'pros_cons': row[6], 'recommend': row[7], 'honey': row[8]})
                     count += 1
+                    print("TARGET =", target_name)
+    print("REVIEW COUNT =", len(reviews))
     return render_template('reviews.html', location=target_name, reviews=reviews)
 
 @app.route('/report/<review_id>', methods=['POST'])
@@ -320,4 +346,3 @@ def go_review():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=False, port=5001)
-
