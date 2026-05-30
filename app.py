@@ -134,11 +134,8 @@ def home():
     reviews = []
     if os.path.exists(CSV_FILE):
         with open(CSV_FILE, mode='r', encoding='utf-8') as f:
-            reader = csv.reader(f)
-            header = next(reader, None)
-            
+            reader = csv.DictReader(f)
             for row in reader:
-                if row:
                     reviews.append(row)
     user_id = session.get('user_id', '알수없음')
     return render_template('index.html', 
