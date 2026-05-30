@@ -20,3 +20,13 @@ Press CTRL+C to quit
 211.224.194.46 - - [30/May/2026 14:29:46] "GET /static/aa.png HTTP/1.1" 304 -
 211.224.194.46 - - [30/May/2026 14:29:48] "GET /location/테크노문 HTTP/1.1" 200 -
 211.224.194.46 - - [30/May/2026 14:29:48] "GET /static/style.css HTTP/1.1" 304 -
+211.224.194.46 - - [30/May/2026 14:33:33] "GET /location/테크노문 HTTP/1.1" 200 -
+211.224.194.46 - - [30/May/2026 14:33:33] "GET /static/style.css HTTP/1.1" 304 -
+211.224.194.46 - - [30/May/2026 14:33:36] "GET / HTTP/1.1" 200 -
+211.224.194.46 - - [30/May/2026 14:33:36] "GET /static/style.css HTTP/1.1" 304 -
+211.224.194.46 - - [30/May/2026 14:33:36] "GET /static/main.js HTTP/1.1" 304 -
+211.224.194.46 - - [30/May/2026 14:33:36] "GET /static/script.js HTTP/1.1" 304 -
+211.224.194.46 - - [30/May/2026 14:33:38] "GET /location/쪽문 HTTP/1.1" 200 -
+211.224.194.46 - - [30/May/2026 14:33:38] "GET /static/style.css HTTP/1.1" 304 -
+211.224.194.46 - - [30/May/2026 14:33:44] "GET /location/서문 HTTP/1.1" 200 -
+211.224.194.46 - - [30/May/2026 14:33:44] "GET /static/style.css HTTP/1.1" 304 -
