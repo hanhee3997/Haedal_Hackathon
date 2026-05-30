@@ -6,3 +6,12 @@ WARNING: This is a development server. Do not use it in a production deployment.
  * Running on http://127.0.0.1:5001
  * Running on http://172.31.13.107:5001
 Press CTRL+C to quit
+211.224.194.46 - - [30/May/2026 10:22:22] "GET / HTTP/1.1" 200 -
+211.224.194.46 - - [30/May/2026 10:22:22] "GET /static/style.css HTTP/1.1" 304 -
+211.224.194.46 - - [30/May/2026 10:22:23] "GET /static/script.js HTTP/1.1" 304 -
+211.224.194.46 - - [30/May/2026 10:22:23] "GET /static/aa.png HTTP/1.1" 304 -
+211.224.194.46 - - [30/May/2026 10:22:23] "GET /static/main.js HTTP/1.1" 304 -
+211.231.103.92 - - [30/May/2026 10:28:02] "GET /location/쪽문 HTTP/1.1" 302 -
+211.231.103.93 - - [30/May/2026 10:28:02] "GET /login HTTP/1.1" 200 -
+211.224.194.46 - - [30/May/2026 10:28:08] "GET /location/쪽문 HTTP/1.1" 200 -
+211.224.194.46 - - [30/May/2026 10:28:08] "GET /static/style.css HTTP/1.1" 304 -

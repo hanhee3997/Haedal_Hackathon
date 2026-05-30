@@ -174,18 +174,21 @@ def write():
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
-    try:
-        print("========== WEBHOOK CALLED ==========")
+    print("========== WEBHOOK CALLED ==========")
+    print("HEADERS =", request.headers)
+    print("RAW DATA =", request.data)
+    print("FORM =", request.form)
 
-        data = request.get_json(force=True)
-        print("RECEIVED DATA:", data)
+    try:
+        data = request.get_json(silent=True)
 
         if not data:
-            print("NO DATA RECEIVED")
-            return jsonify({
-                "status": "error",
-                "message": "No data"
-            }), 400
+            data = request.form.to_dict()
+
+        print("PARSED DATA =", data)
+
+        if not data:
+            return jsonify({"status":"error","message":"No data"}), 400
 
         def safe_str(val):
             if isinstance(val, list):
