@@ -944,7 +944,7 @@ body.dark-mode .map-label:hover {
 body.dark_mode .nav_indicator { background: #7de0cf; }
 
 
-.review-section.container {
+.review-section {
     position: relative !important;
     display: block !important;
     height: auto !important;
@@ -955,13 +955,11 @@ body.dark_mode .nav_indicator { background: #7de0cf; }
 }
 .review-wrapper {
     display: block !important;
-    gap: 16px !important;
-    width: 100% !important;
-    padding: 0 !important;
-    position: relative !important;
+    position: static !important;
     height: auto !important;
-    background: transparent !important;
-}
+    margin: 0 !important;
+    padding: 0 !important;
+} 
 
 .review-mini-card {
     display: block !important;
@@ -969,17 +967,19 @@ body.dark_mode .nav_indicator { background: #7de0cf; }
     position: static !important; 
     margin: 0 0 20px 0 !important;
     padding: 20px !important;
+    border: 1px solid #ddd !important;
     border-radius: 12px !important;
     background: #ffffff !important;
     box-sizing: border-box !important;
     float: none !important;
     clear: both !important;
 }
+
 .review-card {
     display: block !important;
     width: 100% !important;
     position: static !important;
-    margin: 0 0 20px 0 !important; /* 아래쪽 간격 추가 */
+    margin: 0 0 20px 0 !important; 
     padding: 20px !important;
     border: 1px solid #eee !important;
     border-radius: 15px !important;

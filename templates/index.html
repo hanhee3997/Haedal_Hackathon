@@ -264,8 +264,9 @@
             </div>
         </section>
         
-        <section class="review-section container" style="margin: 40px auto; padding: 20px; background: #f9f9f9; border-radius: 10px;">
-            <h2>🏠 최근 올라온 따끈따끈한 후기</h2>
+    <section id="review-section" class="review-section">
+        <div class="container">
+            <h2 style="margin-bottom: 20px;">🏠 최근 올라온 따끈따끈한 후기</h2>
             <div class="review-wrapper">
                 {% for review in reviews %}
                 <div class="review-mini-card">
@@ -275,7 +276,8 @@
                 </div>
                 {% endfor %}
             </div>
-        </section>
+        </div>
+    </section>
     </main>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
